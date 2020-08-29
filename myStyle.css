@@ -1,0 +1,8 @@
+#world{
+    height: 3578600000px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(rgb(15, 15, 15), rgb(11, 122, 248), rgb(0, 217, 255));
+}
