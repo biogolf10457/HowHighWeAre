@@ -7,12 +7,20 @@
 </head>
 <body>
     <div id="world">
-        
-
+        <div class="onEarth">
+            <img class="onEarthImg" src="human.svg" alt="" height="42px" style="left: 180px;">
+        </div>
+        <div class="onEarth">
+            <img class="onEarthImg" src="human.svg" alt="" height="3800px" style="left: 40%;">
+            <div class="onEarthInfo" style="bottom: 3200px; left: 10%;">
+                Here, It's ...... the famous place of ..... <br>
+                Its height is xxx metres.
+            </div>
+        </div>
     </div>
 
     <script>
-        function scrollBottom() {window.scrollTo(0, 99999);}
+        function scrollBottom() {window.scrollTo(0, 99999999);}
         if (document.addEventListener) document.addEventListener("DOMContentLoaded", scrollBottom, false)
         else if (window.attachEvent) window.attachEvent("onload", scrollBottom);
     </script>
