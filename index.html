@@ -11,6 +11,7 @@
         <div id="definition">
 
         </div>
+        <img class="onEarth" id="titan2km" src="human.svg" alt="titan2km" :style="{'--pos': titan2km.pos +'%', '--h': titan2km.h ,}">
         <img class="onEarth" id="titan" src="human.svg" alt="titan" :style="{'--pos': titan.pos +'%', '--h': titan.h ,}">
         <img class="onEarth" id="human" src="human.svg" alt="human" :style="{'--pos': human.pos +'%', '--h': human.h ,}">
         
@@ -26,18 +27,27 @@
             data:{
                 human:{
                     pos:60,//หน่วย%
-                    h:500,//หน่วยpx
+                    h:340,//หน่วยpx
+                    realh:340,//ความสูงจริง
                     definition:'คน'
                 },
                 titan:{
                     pos:40,//หน่วย%
-                    h:3800,//หน่วยpx
+                    h:6000,//หน่วยpx
+                    realh:6000,
                     definition:'ไททัน'
+                },
+                titan2km:{
+                    pos:-80,//หน่วย%
+                    h:200000,//หน่วยpx
+                    realh:200000,
+                    definition:'ไททัน2กิโลเมตร'
                 }
             }
         })
 
         
+        let ratio = 2;
         window.addEventListener("scroll", () => {
             let first = document.getElementById("titan").getBoundingClientRect().top;
             if (first < 200 && first > -750) {
@@ -48,9 +58,17 @@
                 document.querySelector("#definition").style.left = -34+"%";
                 console.log("no")
             }
+
+            let bodyRect = document.body.getBoundingClientRect();
+            let bodyHeight = bodyRect.bottom - bodyRect.top;
+            let worldRect = document.querySelector("#world").getBoundingClientRect();
+            let worldHeight = worldRect.bottom - worldRect.top;
+            let change = (bodyHeight-worldRect.bottom)*ratio;
+            app.human.h = app.human.realh + change;
+            app.titan.h = app.titan.realh + change;
+            app.titan2km.h = app.titan2km.realh + change;
+
         });
-        
-        
 
     </script>
 </body>
