@@ -3,19 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="myStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>How High You Are</title>
 </head>
 <body>
     <div id="world">
-        <div class="onEarth">
-            <img class="onEarthImg" src="human.svg" alt="" height="42px" style="left: 180px;">
+        <div id="definition">
+
+        </div>
+        <div class="onEarth" >
+            <img class="onEarthImg" id="titan" src="human.svg" alt="" height="3800px" style="left: 40%;">
         </div>
         <div class="onEarth">
-            <img class="onEarthImg" src="human.svg" alt="" height="3800px" style="left: 40%;">
-            <div class="onEarthInfo" style="bottom: 3200px; left: 10%;">
-                Here, It's ...... the famous place of ..... <br>
-                Its height is xxx metres.
-            </div>
+            <img class="onEarthImg" src="human.svg" alt="" height="42px" style="left: 80%;">
         </div>
     </div>
 
@@ -23,6 +23,22 @@
         function scrollBottom() {window.scrollTo(0, 99999999);}
         if (document.addEventListener) document.addEventListener("DOMContentLoaded", scrollBottom, false)
         else if (window.attachEvent) window.attachEvent("onload", scrollBottom);
+
+        
+        window.addEventListener("scroll", () => {
+            let first = document.getElementById("titan").getBoundingClientRect().top;
+            if (first < 200 && first > -750) {
+                document.querySelector("#definition").style.left = 0;
+                console.log("yes")
+            }
+            else{
+                document.querySelector("#definition").style.left = -34+"%";
+                console.log("no")
+            }
+        });
+        
+        
+
     </script>
 </body>
 </html>
