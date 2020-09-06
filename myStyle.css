@@ -20,13 +20,11 @@
 }
 
 .onEarth{
+    --pos:60%;
+    --h:500px;
     position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-.onEarthImg{
-    position: absolute;
+    left: var(--pos);
+    height: var(--h);
     bottom: 0;
 }
 

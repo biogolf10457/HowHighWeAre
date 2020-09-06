@@ -11,18 +11,31 @@
         <div id="definition">
 
         </div>
-        <div class="onEarth" >
-            <img class="onEarthImg" id="titan" src="human.svg" alt="" height="3800px" style="left: 40%;">
-        </div>
-        <div class="onEarth">
-            <img class="onEarthImg" src="human.svg" alt="" height="42px" style="left: 80%;">
-        </div>
+        <img class="onEarth" id="titan" src="human.svg" alt="titan" :style="{'--pos': titan.pos +'%', '--h': titan.h ,}">
+        <img class="onEarth" id="human" src="human.svg" alt="human" :style="{'--pos': human.pos +'%', '--h': human.h ,}">
+        
     </div>
 
     <script>
         function scrollBottom() {window.scrollTo(0, 99999999);}
         if (document.addEventListener) document.addEventListener("DOMContentLoaded", scrollBottom, false)
         else if (window.attachEvent) window.attachEvent("onload", scrollBottom);
+
+        let app = new Vue({
+            el:'#world',
+            data:{
+                human:{
+                    pos:60,//หน่วย%
+                    h:500,//หน่วยpx
+                    definition:'คน'
+                },
+                titan:{
+                    pos:40,//หน่วย%
+                    h:3800,//หน่วยpx
+                    definition:'ไททัน'
+                }
+            }
+        })
 
         
         window.addEventListener("scroll", () => {
