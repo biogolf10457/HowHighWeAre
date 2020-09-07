@@ -9,7 +9,15 @@
 <body>
     <div id="world">
         <div id="definition">
-
+            <div id="textbox">
+                <h1>{{title}}</h1>
+                <p>{{realDefinition}}</p>
+            </div>
+        </div>
+        <div id="menu">
+            <a href="#human">Go to Bottom</a>
+            <a href="#world">Go to Top</a>
+            <a href="">About us</a>
         </div>
         <img class="onEarth" id="titan2km" src="human.svg" alt="titan2km" :style="{'--pos': titan2km.pos +'%', '--h': titan2km.h ,}">
         <img class="onEarth" id="titan" src="human.svg" alt="titan" :style="{'--pos': titan.pos +'%', '--h': titan.h ,}">
@@ -18,6 +26,7 @@
     </div>
 
     <script>
+        //start at bottom of the website when enter the website
         function scrollBottom() {window.scrollTo(0, 99999999);}
         if (document.addEventListener) document.addEventListener("DOMContentLoaded", scrollBottom, false)
         else if (window.attachEvent) window.attachEvent("onload", scrollBottom);
@@ -26,45 +35,59 @@
             el:'#world',
             data:{
                 human:{
+                    name:'human',
                     pos:60,//หน่วย%
+                    realpos:60,
                     h:340,//หน่วยpx
                     realh:340,//ความสูงจริง
                     definition:'คน'
                 },
                 titan:{
+                    name:'titan',
                     pos:40,//หน่วย%
+                    realpos:40,
                     h:6000,//หน่วยpx
                     realh:6000,
                     definition:'ไททัน'
                 },
                 titan2km:{
+                    name:'titan2km',
                     pos:-80,//หน่วย%
+                    realpos:-80,
                     h:200000,//หน่วยpx
                     realh:200000,
                     definition:'ไททัน2กิโลเมตร'
-                }
+                },
+                title:'Test',
+                realDefinition:"hello world"
             }
         })
 
         
         let ratio = 2;
         window.addEventListener("scroll", () => {
-            let first = document.getElementById("titan").getBoundingClientRect().top;
-            if (first < 200 && first > -750) {
-                document.querySelector("#definition").style.left = 0;
-                console.log("yes")
-            }
-            else{
-                document.querySelector("#definition").style.left = -34+"%";
-                console.log("no")
-            }
-
+            //set attribute for using in many context
             let bodyRect = document.body.getBoundingClientRect();
             let bodyHeight = bodyRect.bottom - bodyRect.top;
             let worldRect = document.querySelector("#world").getBoundingClientRect();
             let worldHeight = worldRect.bottom - worldRect.top;
-            let change = (bodyHeight-worldRect.bottom)*ratio;
-            app.human.h = app.human.realh + change;
+            let change = (bodyHeight-worldRect.bottom)*ratio; //change size when scroll up or down
+
+            //set attribute of objects in html
+            let titan = document.querySelector("#titan").getBoundingClientRect();
+
+            //for open difition of each objects
+            if (titan.top < bodyHeight && titan.top > -bodyHeight) {
+                app.title = app.titan.name;
+                app.realDefinition = app.titan.definition;
+                document.querySelector("#definition").style.left = 0;
+            }
+            else{
+                document.querySelector("#definition").style.left = -34+"%";
+            }
+
+            //move the objects
+            //app.human.h = app.human.realh + change;
             app.titan.h = app.titan.realh + change;
             app.titan2km.h = app.titan2km.realh + change;
 

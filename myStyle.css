@@ -1,5 +1,5 @@
 #world{
-    height: 500000px;
+    height: 50000px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -18,6 +18,22 @@
     z-index: 2;
     transition: .5s;
 }
+#textbox{
+    margin: 10%;
+    text-align: center;
+}
+
+#menu{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 1%;
+    z-index: 2;
+    width: 30%;
+}
+#menu a{
+    margin-left: 5%;
+}
 
 .onEarth{
     --pos:60%;
@@ -26,6 +42,14 @@
     left: var(--pos);
     height: var(--h);
     bottom: 0;
+}
+
+.floatObject{
+    --pos:60%;
+    --h:500px;
+    position: absolute;
+    left: var(--pos);
+    bottom: var(--h);
 }
 
 /*body {
