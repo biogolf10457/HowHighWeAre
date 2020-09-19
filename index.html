@@ -19,9 +19,7 @@
             <a href="#world">Go to Top</a>
             <a href="">About us</a>
         </div>
-        <img class="onEarth" id="titan2km" src="human.svg" alt="titan2km" :style="{'--pos': titan2km.pos +'%', '--h': titan2km.h ,}">
-        <img class="onEarth" id="titan" src="human.svg" alt="titan" :style="{'--pos': titan.pos +'%', '--h': titan.h ,}">
-        <img class="onEarth" id="human" src="human.svg" alt="human" :style="{'--pos': human.pos +'%', '--h': human.h ,}">
+        <img class="onEarth" v-for="o in onEarth" :id="o.name" :src="o.img" alt="" :style="{'--pos': o.pos +'%', '--h': o.h ,}">
         
     </div>
 
@@ -34,30 +32,36 @@
         let app = new Vue({
             el:'#world',
             data:{
-                human:{
-                    name:'human',
-                    pos:60,//หน่วย%
-                    realpos:60,
-                    h:340,//หน่วยpx
-                    realh:340,//ความสูงจริง
-                    definition:'คน'
-                },
-                titan:{
-                    name:'titan',
-                    pos:40,//หน่วย%
-                    realpos:40,
-                    h:6000,//หน่วยpx
-                    realh:6000,
-                    definition:'ไททัน'
-                },
-                titan2km:{
-                    name:'titan2km',
-                    pos:-80,//หน่วย%
-                    realpos:-80,
-                    h:200000,//หน่วยpx
-                    realh:200000,
-                    definition:'ไททัน2กิโลเมตร'
-                },
+                onEarth:[
+                    //descending sort
+                    {
+                        name:'titan2km',
+                        pos:-80,//หน่วย%
+                        realpos:-80,
+                        h:20000,//หน่วยpx
+                        realh:20000,
+                        definition:'ไททัน2กิโลเมตร',
+                        img:'human.svg'
+                    },
+                    {
+                        name:'titan',
+                        pos:40,//หน่วย%
+                        realpos:40,
+                        h:6000,//หน่วยpx
+                        realh:6000,
+                        definition:'ไททัน',
+                        img:'human.svg'
+                    },
+                    {
+                        name:'human',
+                        pos:60,//หน่วย%
+                        realpos:60,
+                        h:340,//หน่วยpx
+                        realh:340,//ความสูงจริง
+                        definition:'คน',
+                        img:'human.svg'
+                    }
+                ],
                 title:'Test',
                 realDefinition:"hello world"
             }
@@ -74,22 +78,27 @@
             let change = (bodyHeight-worldRect.bottom)*ratio; //change size when scroll up or down
 
             //set attribute of objects in html
-            let titan = document.querySelector("#titan").getBoundingClientRect();
+            let onEarths = document.querySelector("#world").getElementsByClassName("onEarth");
 
             //for open difition of each objects
-            if (titan.top < bodyHeight && titan.top > -bodyHeight) {
-                app.title = app.titan.name;
-                app.realDefinition = app.titan.definition;
-                document.querySelector("#definition").style.left = 0;
+            for (let i = 0; i < onEarths.length; i++) {
+                let oe = onEarths[i].getBoundingClientRect();
+                if (oe.top < bodyHeight && oe.top > -bodyHeight) {
+                    app.title = app.onEarth[i].name;
+                    app.realDefinition = app.onEarth[i].definition;
+                    document.querySelector("#definition").style.left = 0;
+                    break;
+                }
+                else{
+                    document.querySelector("#definition").style.left = -34+"%";
+                }
             }
-            else{
-                document.querySelector("#definition").style.left = -34+"%";
-            }
+                
 
             //move the objects
-            //app.human.h = app.human.realh + change;
+            /*app.human.h = app.human.realh + change;
             app.titan.h = app.titan.realh + change;
-            app.titan2km.h = app.titan2km.realh + change;
+            app.titan2km.h = app.titan2km.realh + change;*/
 
         });
 
