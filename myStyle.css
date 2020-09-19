@@ -1,11 +1,11 @@
 #world{
-    height: 120000px;
+    height: 135000px;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     /*overflow: hidden;*/
-    background-image: linear-gradient( rgb(15, 15, 15), rgb(11, 122, 248), rgb(0, 217, 255));
+    background-image: linear-gradient( rgb(15, 15, 15), rgb(15, 15, 15), rgb(11, 122, 248), rgb(0, 217, 255));
 }
 
 #definition{
@@ -73,12 +73,25 @@
     right: 2.5%;
     bottom: var(--h);
     font-size: 2em;
+    color: black;
     z-index: 2;
     opacity: 0;
 }
 
 .info{
     white-space:pre-wrap;
+}
+
+.atmosphere{
+    --h:500px;
+    --fc:black;
+    margin-left: 25%;
+    width: 50%;
+    text-align: center;
+    position: absolute;
+    bottom: var(--h);
+    opacity: .75;
+    color: var(--fc);
 }
 
 /*body {
