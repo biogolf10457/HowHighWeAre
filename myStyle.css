@@ -1,5 +1,5 @@
 #world{
-    height: 50000px;
+    height: 120000px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -43,6 +43,7 @@
     left: var(--pos);
     height: var(--h);
     bottom: var(--b);
+
 }
 
 .floatObject{

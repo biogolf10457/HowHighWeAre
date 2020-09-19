@@ -22,7 +22,7 @@
         <div id="ruler"></div>
         <div v-for="o in onEarth">
             <img class="onEarth"  :id="o.id" :src="o.img" alt="" :style="{'--pos': o.realpos +'%', '--h': o.realh , '--b': o.realbottom}">
-            <div class="hruler" :style="{'--h': o.realh}">
+            <div class="hruler" :style="{'--h': o.realh+o.realbottom}">
                 {{o.defh}}
                 <svg height="30" width="30">
                     <polygon points="0,0 30,15 0,30" style="fill:lime;stroke:purple;stroke-width:1" />
@@ -42,8 +42,33 @@
             data:{
                 onEarth:[
                     //descending sort
-                    //onEarth on height and slide in
-                    
+                    //onEarth slide in
+                    {
+                        id:'everest',
+                        name:'ยอดเขาเอเวอเรสต์',
+                        pos:100,//หน่วย%
+                        realpos:100, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:45000,//หน่วยpx
+                        realbottom:45000, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:15000,//หน่วยpx
+                        realh:15000, //ความสูงจริงบนเว็บ
+                        definition:'เป็นยอดเขาหนึ่งในเทือกเขาหิมาลัย ซึ่งเกิดจากการชนกันของแผ่นเปลือกโลกยูเรเซียนและแผ่นเปลือกโลกอินเดีย ในทางภูมิรัฐศาสตร์ ยอดเขาเอเวอเรสต์ถือเป็นจุดแบ่งพรมแดนระหว่างประเทศเนปาลและทิเบตชื่อยอดเขาเอเวอเรสต์นั้น ตั้งโดย เซอร์แอนดรูว์ วอ นักสำรวจประเทศอินเดียชาวอังกฤษ เพื่อเป็นเกียรติแก่ เซอร์จอร์จ อีฟเรสต์',
+                        defh:'8848 m', //ความสูงจริงบนโลก
+                        img:'Mountain.svg'
+                    },
+                    {
+                        id:'fuji',
+                        name:'ภูเขาไฟฟูจิ',
+                        pos:100,//หน่วย%
+                        realpos:100, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:30000,//หน่วยpx
+                        realbottom:30000, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:5000,//หน่วยpx
+                        realh:5000, //ความสูงจริงบนเว็บ
+                        definition:'เป็นภูเขาที่สูงที่สุดใน ประเทศญี่ปุ่น ราว 3,776 เมตร (12,388 ฟุต) ตั้งอยู่บริเวณจังหวัดชิซูโอกะและจังหวัดยามานาชิ ซึ่งอยู่ทางตะวันตกของ โตเกียว พื้นที่โดยรอบประกอบด้วย ทะเลสาบฟูจิทั้งห้า อุทยานแห่งชาติฟูจิ-ฮาโกเนะ-อิซุ และน้ำตกชิราอิโตะ โดยในวันที่อากาศแจ่มใสสามารถมองเห็นจากโตเกียวได้',
+                        defh:'3776 m', //ความสูงจริงบนโลก
+                        img:'Mountain.svg'
+                    },
 
                     //onEarth bottom 0
                     {
@@ -157,14 +182,12 @@
         })
 
         
-        let ratio = 2;
         window.addEventListener("scroll", () => {
             //set attribute for using in many context
             let bodyRect = document.body.getBoundingClientRect();
             let bodyHeight = bodyRect.bottom - bodyRect.top;
             let worldRect = document.querySelector("#world").getBoundingClientRect();
             let worldHeight = worldRect.bottom - worldRect.top;
-            let change = (bodyHeight-worldRect.bottom)*ratio; //change size when scroll up or down
 
             //set attribute of objects in html
             let onEarths = document.querySelector("#world").getElementsByClassName("onEarth");
@@ -183,6 +206,7 @@
                 }
             }
 
+            //ruler on the right side
             let hrulers = document.querySelector("#world").getElementsByClassName("hruler");
             let ruler = document.querySelector("#ruler").getBoundingClientRect();
             //for open ruler
@@ -196,6 +220,23 @@
             }
 
             //move the objects
+            //fuji
+            let fuji = document.querySelector("#fuji").getBoundingClientRect();
+            let appfuji = app.onEarth.find(o => o.id == 'fuji')
+            if (fuji.bottom > bodyHeight+100) {
+                appfuji.realpos = appfuji.pos - (fuji.bottom - bodyHeight)*200/appfuji.realh
+            }else{
+                appfuji.realpos = appfuji.pos
+            }
+
+            //everest
+            let everest = document.querySelector("#everest").getBoundingClientRect();
+            let appeverest = app.onEarth.find(o => o.id == 'everest')
+            if (everest.bottom > bodyHeight+100) {
+                appeverest.realpos = appeverest.pos - (everest.bottom - bodyHeight)*550/appeverest.realh
+            }else{
+                appeverest.realpos = appeverest.pos
+            }
             /*app.human.h = app.human.realh + change;
             app.titan.h = app.titan.realh + change;
             app.titan2km.h = app.titan2km.realh + change;*/
