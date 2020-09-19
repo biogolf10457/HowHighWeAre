@@ -11,7 +11,7 @@
         <div id="definition">
             <div id="textbox">
                 <h1>{{title}}</h1>
-                <p>{{realDefinition}}</p>
+                <p class="info">{{realDefinition}}</p>
             </div>
         </div>
         <div id="menu">
@@ -19,8 +19,16 @@
             <a href="#world">Go to Top</a>
             <a href="">About us</a>
         </div>
-        <img class="onEarth" v-for="o in onEarth" :id="o.name" :src="o.img" alt="" :style="{'--pos': o.pos +'%', '--h': o.h ,}">
-        
+        <div id="ruler"></div>
+        <div v-for="o in onEarth">
+            <img class="onEarth"  :id="o.id" :src="o.img" alt="" :style="{'--pos': o.realpos +'%', '--h': o.realh , '--b': o.realbottom}">
+            <div class="hruler" :style="{'--h': o.realh}">
+                {{o.defh}}
+                <svg height="30" width="30">
+                    <polygon points="0,0 30,15 0,30" style="fill:lime;stroke:purple;stroke-width:1" />
+                </svg>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -34,31 +42,112 @@
             data:{
                 onEarth:[
                     //descending sort
+                    //onEarth on height and slide in
+                    
+
+                    //onEarth bottom 0
                     {
-                        name:'titan2km',
-                        pos:-80,//หน่วย%
-                        realpos:-80,
+                        id:'Taipei101',
+                        name:'Taipei 101',
+                        pos:-400,//หน่วย%
+                        realpos:-400, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:25000,//หน่วยpx
+                        realh:25000, //ความสูงจริงบนเว็บ
+                        definition:'เป็นสิ่งก่อสร้างที่มีชื่อเสียงระดับโลก เริ่มสร้างเมือปี 1997 ซึ่งตั้งอยู่ในใจกลางเขตพิเศษของซินอี้ เมืองไทเป ประเทศไต้หวัน ซึ่งเป็นเขตที่มีการพัฒนาที่นำยุคสมัยก่อนและสมัยใหม่มาประสมประสานกันมาพัฒนา ในปี 70 หรือเรียกว่า ยุคของ ไทเป แมนฮัลตัล ก็ว่าได้ และเป็นเขตเศรษฐกิจที่ดีมาก มีความสูง 101 ชั้น ซึ่ง หมายเลข 1 นั้นมาจากความหมายว่า ความเป็นมงคล และ 01 ความหมาย เป็นระบบดิจิตอล และ มีความก้าวหน้าทาง High Technology จึงนำมารวมกัน คือ ความก้าวหน้าทางด้าน Technology ที่ดีที่สุด',
+                        defh:'509.2 m', //ความสูงจริงบนโลก
+                        img:'human.svg'
+                    },
+                    {
+                        id:'iconsiam',
+                        name:'แมกโนเลียส์ วอเตอร์ฟรอนท์ เรสซิเดนเซส แอท ไอคอนสยาม',
+                        pos:-300,//หน่วย%
+                        realpos:-300, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                         h:20000,//หน่วยpx
-                        realh:20000,
-                        definition:'ไททัน2กิโลเมตร',
+                        realh:20000, //ความสูงจริงบนเว็บ
+                        definition:'Magnolias Waterfront Residences (แมกโนเลียส์ วอเตอร์ฟรอนท์ เรสซิเดนซ์) เป็นคอนโดมิเนียมที่ถูกพัฒนาโดย สำนักงานใหญ่ บริษัท แมกโนเลีย ควอลิตี้ ดีเวล็อปเม้นต์ คอร์ปอเรชั่น จำกัด ตั้งอยู่บน 225/1 เจริญนคร แขวง คลองต้นไทร เขต คลองสาน กรุงเทพมหานคร 10600 สำนักงานใหญ่ บริษัท แมกโนเลีย ควอลิตี้ ดีเวล็อปเม้นต์ คอร์ปอเรชั่น จำกัด คือเจ้าของโครงการ วิซดอม อเวนิว รัชดา - ลาดพร้าว แมกโนเลียส์ ราชดำริ บูเลอวาร์ด และ วิสซ์ดอม สุขุมวิท 64 โครงสร้างของ แมกโนเลียส์ วอเตอร์ฟรอนท์ เรสซิเดนซ์ แล้วเสร็จในปี 2017 คอนโดนี้ มี 2 อาคาร จำนวน 70 ชั้น และ รวมทั้งหมด 525 ยูนิต',
+                        defh:'317.95 m', //ความสูงจริงบนโลก
                         img:'human.svg'
                     },
                     {
-                        name:'titan',
-                        pos:40,//หน่วย%
-                        realpos:40,
+                        id:'colosseum',
+                        name:'สนามกีฬาโคลอสเซียม',
+                        pos:-120,//หน่วย%
+                        realpos:-120, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:12500,//หน่วยpx
+                        realh:12500, //ความสูงจริงบนเว็บ
+                        definition:'เป็นสนามกีฬากลางแจ้งขนาดใหญ่ตั้งอยู่ใจกลางกรุงโรม เริ่มสร้างขึ้นในสมัยจักรพรรดิเวสเปเซียนแห่งจักรวรรดิโรมัน และสร้างเสร็จในสมัยของจักรพรรดิไททัส ในคริสต์ศตวรรษที่ 1 สูง 57 เมตร สามารถจุผู้ชมได้ประมาณ 50,000 คน',
+                        defh:'57 m', //ความสูงจริงบนโลก
+                        img:'human.svg'
+                    },
+                    {
+                        id:'biyok3',
+                        name:'ตึกใบหยก 3',
+                        pos:-60,//หน่วย%
+                        realpos:-60, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:11000,//หน่วยpx
+                        realh:11000, //ความสูงจริงบนเว็บ
+                        definition:'เป็นตึกระฟ้าในกรุงเทพมหานคร ปัจจุบันเป็นตึกที่สูงเป็นลำดับที่ 4 ของประเทศไทย และเคยเป็นตึกที่สูงที่สุดในประเทศไทยระหว่าง พ.ศ. 2540 - 2559 ก่อนถูกทำลายสถิติโดยตึกคิง เพาเวอร์ มหานครตึกใบหยก 2 ที่ความสูง 54 เมตร (150 ฟุต)',
+                        defh:'54 m', //ความสูงจริงบนโลก
+                        img:'human.svg'
+                    },
+                    {
+                        id:'jesusChrist',
+                        name:'รูปปั้นพระเยซูคริสต์',
+                        pos:-40,//หน่วย%
+                        realpos:-40, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:8000,//หน่วยpx
+                        realh:8000, //ความสูงจริงบนเว็บ
+                        definition:'ตั้งอยู่บนยอดเขาโคคาวาดู ( Cocarvado ) กรุงริโอ เดอ จาเนโร ( Rio de Janero ) ประเทศบราซิล มีความสูงราว 38 เมตร สร้างในปีค.ศ. 1921ได้รับการออกแบบโดยไฮตอร์ ดา ซิลวา กอสตา( Heitor da Silva Costa )ชาวบราซิล และสร้างโดยพอล ลันดอฟสกี ( Paul Landowski ) ประติมากรชาวฝรั่งเศสเชื้อสายโปแลนด์ ใช้เวลาในการสร้าง 5 ปี โดยทำพิธีเปิดอย่างเป็นทางการในวันที่ 12 ตุลาคม 1926 ซึ่งนักท่องเที่ยวสามารถขึ้นไปยังฐานของรูปปั้นเพื่อชมทิวทัศน์ของเมืองริโอ เดอ จาเนโรได้',
+                        defh:'38 m', //ความสูงจริงบนโลก
+                        img:'human.svg'
+                    },
+                    {
+                        id:'babylon',
+                        name:'สวนลอยบาบิโลน',
+                        pos:-20,//หน่วย%
+                        realpos:-20, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                         h:6000,//หน่วยpx
-                        realh:6000,
-                        definition:'ไททัน',
+                        realh:6000, //ความสูงจริงบนเว็บ
+                        definition:'จัดเป็นหนึ่งในเจ็ดสิ่งมหัศจรรย์ของโลก ตั้งอยู่ริมแม่น้ำยูเฟรติส ประเทศอิรักในปัจจุบัน สร้างโดยพระเจ้าเนบูคัดเนซซาร์ที่ 2 แห่งกรุงบาบิโลเนียสร้างขึ้นเมื่อ 600 ปีก่อนคริสต์ศักราช สูงประมาณ 75 ฟุต กินพื้นที่ 400 ตารางฟุต',
+                        defh:'22.86 m', //ความสูงจริงบนโลก
                         img:'human.svg'
                     },
                     {
-                        name:'human',
+                        id:'statueOfLiberty',
+                        name:'เทพีเสรีภาพ',
+                        pos:10,//หน่วย%
+                        realpos:10, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
+                        h:3000,//หน่วยpx
+                        realh:3000,//ความสูงจริงบนเว็บ
+                        definition:'บาร์ทอลดิ เริ่มงานก่อสร้างอนุสรณ์สถานแห่งเสรีภาพขึ้นเมื่อ พ.ศ. 2417 (ค.ศ. 1874) โดยใช้มารดาของเขาเป็นนางแบบ เริ่มแรกทำรูปจำลองด้วยปูนปลาสเตอร์สูง 9 ฟุต 1 รูป และสูง 36 ฟุต',
+                        defh:'10.97 m', //ความสูงจริงบนโลก
+                        img:'human.svg'
+                    },
+                    {
+                        id:'human',
+                        name:'มนุษย์',
                         pos:60,//หน่วย%
-                        realpos:60,
+                        realpos:60,//ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                         h:340,//หน่วยpx
-                        realh:340,//ความสูงจริง
-                        definition:'คน',
+                        realh:340,//ความสูงจริงบนเว็บ
+                        definition:'มนุษย์มีความสูงเฉลี่ยที่ 170 cm \n\n แต่รู้ไหมว่ามนุษย์ที่สูงที่สุดสูงเท่าใด ? \n\n โรเบิร์ต เพอร์ชิง แวดโลว์ \n ชายผู้มีความสูงถึง 272 cm',
+                        defh:'1.7 m', //ความสูงจริงบนโลก
                         img:'human.svg'
                     }
                 ],
@@ -83,7 +172,7 @@
             //for open difition of each objects
             for (let i = 0; i < onEarths.length; i++) {
                 let oe = onEarths[i].getBoundingClientRect();
-                if (oe.top < bodyHeight && oe.top > -bodyHeight) {
+                if (oe.top < bodyHeight && oe.top > -bodyHeight/2) {
                     app.title = app.onEarth[i].name;
                     app.realDefinition = app.onEarth[i].definition;
                     document.querySelector("#definition").style.left = 0;
@@ -93,7 +182,18 @@
                     document.querySelector("#definition").style.left = -34+"%";
                 }
             }
-                
+
+            let hrulers = document.querySelector("#world").getElementsByClassName("hruler");
+            let ruler = document.querySelector("#ruler").getBoundingClientRect();
+            //for open ruler
+            for (let i = 0; i < hrulers.length; i++) {
+                hrulerbound = hrulers[i].getBoundingClientRect();
+                if (hrulerbound.top > ruler.top && hrulerbound.bottom < ruler.bottom) {
+                    hrulers[i].style.opacity = 1;
+                }else{
+                    hrulers[i].style.opacity = 0;
+                }
+            }
 
             //move the objects
             /*app.human.h = app.human.realh + change;
