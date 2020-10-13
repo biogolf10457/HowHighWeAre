@@ -41,6 +41,7 @@
     --b:0px;
     position: absolute;
     left: var(--pos);
+    transform: translate(-50%,0);
     height: var(--h);
     bottom: var(--b);
 
