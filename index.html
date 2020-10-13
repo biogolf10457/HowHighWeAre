@@ -22,7 +22,8 @@
         </div>
         <div id="ruler"></div>
         <div v-for="o in onEarth">
-            <img class="onEarth"  :id="o.id" :src="o.img" alt="" :style="{'--pos': o.realpos +'%', '--h': o.realh * scale, '--b': o.realbottom}">
+            <img class="onEarth"  :id="o.id" :src="o.img" alt="" @mouseover="openDefinition(o.name, o.definition)"
+            :style="{'--pos': o.realpos +'%', '--h': o.realh * scale, '--b': o.realbottom}">
             <div class="hruler" :style="{'--h': o.realh+o.realbottom}">
                 {{o.defh}}
                 <svg height="30" width="30">
@@ -231,7 +232,7 @@
                         defh:'57 m', //ความสูงจริงบนโลก
                         img:'svg/colosseum.svg'
                     },
-                    {
+                    /*{
                         id:'biyok3',
                         name:'ตึกใบหยก 3',
                         pos:60,//หน่วย%
@@ -243,7 +244,7 @@
                         definition:'เป็นตึกระฟ้าในกรุงเทพมหานคร ปัจจุบันเป็นตึกที่สูงเป็นลำดับที่ 4 ของประเทศไทย และเคยเป็นตึกที่สูงที่สุดในประเทศไทยระหว่าง พ.ศ. 2540 - 2559 ก่อนถูกทำลายสถิติโดยตึกคิง เพาเวอร์ มหานครตึกใบหยก 2 ที่ความสูง 54 เมตร (150 ฟุต)',
                         defh:'54 m', //ความสูงจริงบนโลก
                         img:'human.svg'
-                    },
+                    },*/
                     {
                         id:'jesusChrist',
                         name:'รูปปั้นพระเยซูคริสต์',
@@ -286,6 +287,13 @@
                 ],
                 title:'Test',
                 realDefinition:"hello world"
+            },
+            methods:{
+                openDefinition: function(head, def){
+                    this.title = head;
+                    this.realDefinition = def;
+                    document.querySelector("#definition").style.left = 0;
+                }
             }
         })
 
@@ -300,18 +308,14 @@
             //set attribute of objects in html
             let onEarths = document.querySelector("#world").getElementsByClassName("onEarth");
 
-            //for open difition of each objects
-            for (let i = 0; i < onEarths.length; i++) {
-                let oe = onEarths[i].getBoundingClientRect();
-                if (oe.top < bodyHeight && oe.top > -bodyHeight/2) {
-                    app.title = app.onEarth[i].name;
-                    app.realDefinition = app.onEarth[i].definition;
-                    document.querySelector("#definition").style.left = 0;
-                    break;
-                }
-                else{
-                    document.querySelector("#definition").style.left = -34+"%";
-                }
+            //change scale
+            let babylon = document.querySelector("#babylon").getBoundingClientRect();
+            let colosseum = document.querySelector("#colosseum").getBoundingClientRect();
+            if (babylon.top < bodyHeight) {
+                app.scale = 2;
+            }
+            else if(babylon.top > bodyHeight && colosseum.top < bodyHeight){
+                app.scale = 1;
             }
 
             //ruler on the right side

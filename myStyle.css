@@ -39,11 +39,12 @@
     --pos:60%;
     --h:500px;
     --b:0px;
-    position: absolute;
+    position: fixed;
     left: var(--pos);
     transform: translate(-50%,0);
     height: var(--h);
     bottom: var(--b);
+    transition: .5s;
 
 }
 
