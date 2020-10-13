@@ -45,6 +45,8 @@
             el:'#world',
             data:{
                 scale: 200,
+                scaleIndex: 0,
+                scaleList: [200, 30, 18, 12, 7.5, 1.4, 0.25, 0.08],
                 atmosphere:[
                     //ascending sort
                     {
@@ -104,7 +106,7 @@
                         definition:'วงโคจรประจำที่ (Geostationary Earth Orbit "GEO") เป็นดาวเทียมเพื่อการสื่อสารเป็นส่วนใหญ่ อยู่สูงจากพื้นโลกประมาณ 35,780 กม. เส้นทางโคจรอยู่ในแนวเส้นศูนย์สูตร (Equatorial Orbit) ดาวเทียมจะหมุนรอบโลกด้วยความเร็วเชิงมุมเท่ากับโลกหมุนรอบตัวเองทำให้ดู เหมือนลอยนิ่งอยู่เหนือ จุดจุดหนึ่งบนโลกตลอดเวลา (เรียกทั่ว ๆ ไปว่า "ดาวเทียมค้างฟ้า") ดาวเทียมจะอยู่กับที่เมื่อเทียบกับโลกมีวงโคจรอยู่ในระนาบเดียวกันกับ เส้นศูนย์สูตร อยู่สูงจากพื้นโลกประมาณ 35,786 กม. วงโคจรพิเศษนี้เรียกว่า “วงโคจรค้างฟ้า” หรือ “วงโคจรคลาร์ก” (Clarke Belt) เพื่อเป็นเกียรติแก่นาย อาร์เทอร์ ซี. คลาร์ก ผู้นำเสนอแนวคิดเกี่ยวกับวงโคจรนี้ เมื่อ เดือนตุลาคม ค.ศ. 1945',
                         defh:'35780 km', //ความสูงจริงบนโลก
                         img:'human.svg'
-                    },//1m = .025
+                    },
                     {
                         id:'MEO',
                         name:'Medium Earth Orbit "MEO"',
@@ -143,37 +145,35 @@
                         definition:'ในปี พ.ศ. 2533 องค์การนาซาได้ส่งกล้องโทรทรรศน์อวกาศฮับเบิล (Hubble Space Telescope) ขึ้นไปประจำในวงโคจรรอบโลกที่ความสูง 600 กิโลเมตรเหนือผิวโลก บรรยากาศที่ความสูงดังกล่าวนี้เบาบางเทียบได้กับสภาวะสุญญากาศ ในการสังเกตการณ์ทางดาราศาสตร์ที่ระดับความสูงดังกล่าวจึงไม่มีผลกระทบจากบรรยากาศ',
                         defh:'600 km', //ความสูงจริงบนโลก
                         img:'human.svg'
-                    },//1m = 0.5px
+                    },
 
-                    //onEarth slide in
                     {
                         id:'everest',
                         name:'ยอดเขาเอเวอเรสต์',
-                        pos:100,//หน่วย%
-                        realpos:100, //ตำแหน่งจากleftจริงบนเว็บ
-                        b:60000,//หน่วยpx
-                        realbottom:60000, //ตำแหน่งจากbottomจริงบนเว็บ
+                        pos:60,//หน่วย%
+                        realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                         h:8848,//หน่วยpx
                         realh:8848, //ความสูงจริงบนเว็บ
                         definition:'เป็นยอดเขาหนึ่งในเทือกเขาหิมาลัย ซึ่งเกิดจากการชนกันของแผ่นเปลือกโลกยูเรเซียนและแผ่นเปลือกโลกอินเดีย ในทางภูมิรัฐศาสตร์ ยอดเขาเอเวอเรสต์ถือเป็นจุดแบ่งพรมแดนระหว่างประเทศเนปาลและทิเบตชื่อยอดเขาเอเวอเรสต์นั้น ตั้งโดย เซอร์แอนดรูว์ วอ นักสำรวจประเทศอินเดียชาวอังกฤษ เพื่อเป็นเกียรติแก่ เซอร์จอร์จ อีฟเรสต์',
                         defh:'8848 m', //ความสูงจริงบนโลก
                         img:'Mountain.svg'
-                    },//1m = 8px
+                    },
                     {
                         id:'fuji',
                         name:'ภูเขาไฟฟูจิ',
-                        pos:100,//หน่วย%
-                        realpos:100, //ตำแหน่งจากleftจริงบนเว็บ
-                        b:38000,//หน่วยpx
-                        realbottom:38000, //ตำแหน่งจากbottomจริงบนเว็บ
+                        pos:60,//หน่วย%
+                        realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                        b:0,//หน่วยpx
+                        realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                         h:3776,//หน่วยpx
                         realh:3776, //ความสูงจริงบนเว็บ
                         definition:'เป็นภูเขาที่สูงที่สุดใน ประเทศญี่ปุ่น ราว 3,776 เมตร (12,388 ฟุต) ตั้งอยู่บริเวณจังหวัดชิซูโอกะและจังหวัดยามานาชิ ซึ่งอยู่ทางตะวันตกของ โตเกียว พื้นที่โดยรอบประกอบด้วย ทะเลสาบฟูจิทั้งห้า อุทยานแห่งชาติฟูจิ-ฮาโกเนะ-อิซุ และน้ำตกชิราอิโตะ โดยในวันที่อากาศแจ่มใสสามารถมองเห็นจากโตเกียวได้',
                         defh:'3776 m', //ความสูงจริงบนโลก
                         img:'svg/fuji.svg'
-                    },//1m = 12px
+                    },
 
-                    //onEarth bottom 0
                     {
                         id:'Taipei101',
                         name:'Taipei 101',
@@ -199,7 +199,7 @@
                         definition:'Magnolias Waterfront Residences (แมกโนเลียส์ วอเตอร์ฟรอนท์ เรสซิเดนซ์) เป็นคอนโดมิเนียมที่ถูกพัฒนาโดย สำนักงานใหญ่ บริษัท แมกโนเลีย ควอลิตี้ ดีเวล็อปเม้นต์ คอร์ปอเรชั่น จำกัด ตั้งอยู่บน 225/1 เจริญนคร แขวง คลองต้นไทร เขต คลองสาน กรุงเทพมหานคร 10600 สำนักงานใหญ่ บริษัท แมกโนเลีย ควอลิตี้ ดีเวล็อปเม้นต์ คอร์ปอเรชั่น จำกัด คือเจ้าของโครงการ วิซดอม อเวนิว รัชดา - ลาดพร้าว แมกโนเลียส์ ราชดำริ บูเลอวาร์ด และ วิสซ์ดอม สุขุมวิท 64 โครงสร้างของ แมกโนเลียส์ วอเตอร์ฟรอนท์ เรสซิเดนซ์ แล้วเสร็จในปี 2017 คอนโดนี้ มี 2 อาคาร จำนวน 70 ชั้น และ รวมทั้งหมด 525 ยูนิต',
                         defh:'317.95 m', //ความสูงจริงบนโลก
                         img:'human.svg'
-                    },//1m = 70px
+                    },
                     {
                         id:'statueOfLiberty',
                         name:'เทพีเสรีภาพ',
@@ -227,19 +227,19 @@
                         defh:'57 m', //ความสูงจริงบนโลก
                         img:'svg/colosseum.svg'
                     },
-                    /*{
+                    {
                         id:'biyok3',
                         name:'ตึกใบหยก 3',
                         pos:60,//หน่วย%
                         realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
                         b:0,//หน่วยpx
                         realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
-                        h:5400,//หน่วยpx
-                        realh:5400, //ความสูงจริงบนเว็บ
+                        h:54,//หน่วยpx
+                        realh:54, //ความสูงจริงบนเว็บ
                         definition:'เป็นตึกระฟ้าในกรุงเทพมหานคร ปัจจุบันเป็นตึกที่สูงเป็นลำดับที่ 4 ของประเทศไทย และเคยเป็นตึกที่สูงที่สุดในประเทศไทยระหว่าง พ.ศ. 2540 - 2559 ก่อนถูกทำลายสถิติโดยตึกคิง เพาเวอร์ มหานครตึกใบหยก 2 ที่ความสูง 54 เมตร (150 ฟุต)',
                         defh:'54 m', //ความสูงจริงบนโลก
                         img:'human.svg'
-                    },*/
+                    },
                     {
                         id:'jesusChrist',
                         name:'รูปปั้นพระเยซูคริสต์',
@@ -278,7 +278,7 @@
                         definition:'มนุษย์มีความสูงเฉลี่ยที่ 170 cm \n\n แต่รู้ไหมว่ามนุษย์ที่สูงที่สุดสูงเท่าใด ? \n\n โรเบิร์ต เพอร์ชิง แวดโลว์ \n ชายผู้มีความสูงถึง 272 cm',
                         defh:'1.7 m', //ความสูงจริงบนโลก
                         img:'human.svg'
-                    }//1m = 200px
+                    }
                 ],
                 title:'Test',
                 realDefinition:"hello world"
@@ -290,15 +290,16 @@
                     document.querySelector("#definition").style.left = 0;
                 },
                 goUp: function(){
-                    if (this.scale > 10) {
-                        this.scale -= 10;
-                    }
-                    if (this.scale <= 10) {
-                        this.scale -= 0.1;
+                    if (this.scaleIndex < this.scaleList.length-1) {
+                        this.scaleIndex += 1;
+                        this.scale = this.scaleList[this.scaleIndex];
                     }
                 },
                 goDown: function(){
-                    this.scale += 10;
+                    if (this.scaleIndex > 0) {
+                        this.scaleIndex -= 1;
+                        this.scale = this.scaleList[this.scaleIndex];
+                    }
                 }
             }
         })
@@ -318,25 +319,10 @@
             
 
             //ruler on the right side
-            let hrulers = document.querySelector("#world").getElementsByClassName("hruler");
-            let ruler = document.querySelector("#ruler").getBoundingClientRect();
-            //for open ruler
-            for (let i = 0; i < hrulers.length; i++) {
-                hrulerbound = hrulers[i].getBoundingClientRect();
-                if (hrulerbound.top > ruler.top && hrulerbound.bottom < ruler.bottom) {
-                    hrulers[i].style.opacity = 1;
-                }else{
-                    hrulers[i].style.opacity = 0;
-                }
-
-                if (i == 0) {
-                    hrulers[i].style.color = 'white';
-                }
-            }
 
             //move the objects
             //fuji
-            let fuji = document.querySelector("#fuji").getBoundingClientRect();
+            /*let fuji = document.querySelector("#fuji").getBoundingClientRect();
             let appfuji = app.onEarth.find(o => o.id == 'fuji')
             if (fuji.bottom > bodyHeight+100) {
                 appfuji.realpos = appfuji.pos - (fuji.bottom - bodyHeight)*200/appfuji.realh
@@ -351,7 +337,7 @@
                 appeverest.realpos = appeverest.pos - (everest.bottom - bodyHeight)*550/appeverest.realh
             }else{
                 appeverest.realpos = appeverest.pos
-            }
+            }*/
 
         });
 
