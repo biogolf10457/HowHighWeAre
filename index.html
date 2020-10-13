@@ -23,11 +23,11 @@
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
         <div v-for="o in onEarth">
-            <img class="onEarth"  :id="o.id" :src="o.img" alt="" @mouseover="openDefinition(o.name, o.definition)"
+            <img class="onEarth"  :id="o.id" :src="o.img" alt="" @click="openDefinition(o.name, o.definition)"
             :style="{'--pos': o.realpos +'%', '--h': o.realh * scale, '--b': o.realbottom}">
         </div>
         <div v-for="at in atmosphere">
-            <div class="atmosphere" :style="{'--h': at.h, '--fc': at.color}">
+            <div class="atmosphere" :id="at.name" :style="{'--h': at.h, '--fc': at.color}">
                 <h1>{{at.name}}</h1>
                 <p>{{at.info}}</p>
             </div>
@@ -293,6 +293,9 @@
                     if (this.scaleIndex < this.scaleList.length-1) {
                         this.scaleIndex += 1;
                         this.scale = this.scaleList[this.scaleIndex];
+                    }
+                    else if (this.scaleIndex >= this.scaleList.length-1) {
+                        document.getElementById("Troposphere").scrollIntoView();
                     }
                 },
                 goDown: function(){
