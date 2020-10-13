@@ -57,27 +57,24 @@
     bottom: var(--h);
 }
 
-#ruler{
-    height: 80vh;
-    width: 1%;
+#up{
     position: fixed;
-    top: 10vh;
-    right: 1%;
-    background-color: rgb(255, 255, 255);
-    opacity: 1;
-    transition: 1s;
+    width: 10%;
+    height: 10%;
+    background-color: red;
+    top: 0;
+    right: 15%;
     z-index: 2;
 }
 
-.hruler{
-    --h:500px;
-    position: absolute;
-    right: 2.5%;
-    bottom: var(--h);
-    font-size: 2em;
-    color: black;
+#down{
+    position: fixed;
+    width: 10%;
+    height: 10%;
+    background-color: blue;
+    top: 0;
+    right: 0;
     z-index: 2;
-    opacity: 0;
 }
 
 .info{
