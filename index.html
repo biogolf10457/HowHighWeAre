@@ -451,17 +451,23 @@
                         this.scaleIndex += 1;
                         this.scenes[0].scale = this.scaleList[this.scaleIndex];
                     }
-                    else if (this.scaleIndex >= this.scaleList.length-1) {
-                        this.scenes.forEach(scene => {
-                            scene.where -= this.scenes[this.scaleIndex - this.scaleList.length + 2].height;
-                        });
+                    else if (this.scaleIndex >= this.scaleList.length-1 && this.scaleIndex < this.scaleList.length + this.scenes.length - 2) {
                         this.scaleIndex += 1;
+                        this.scenes.forEach(scene => {
+                            scene.where -= this.scenes[this.scaleIndex - this.scaleList.length + 1].height;
+                        });
                     }
                 },
                 goDown: function(){
-                    if (this.scaleIndex > 0) {
+                    if (this.scaleIndex > 0 && this.scaleIndex <= this.scaleList.length-1) {
                         this.scaleIndex -= 1;
-                        this.scale = this.scaleList[this.scaleIndex];
+                        this.scenes[0].scale = this.scaleList[this.scaleIndex];
+                    }
+                    else if (this.scaleIndex > this.scaleList.length-1) {
+                        this.scaleIndex -= 1;
+                        this.scenes.forEach(scene => {
+                            scene.where += this.scenes[this.scaleIndex - this.scaleList.length + 2].height;
+                        });
                     }
                 }
             }
