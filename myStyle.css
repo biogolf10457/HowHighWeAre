@@ -3,13 +3,13 @@ html{
 }
 
 #world{
-    height: 900000px;
+    height: 100vh;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     /*overflow: hidden;*/
-    background-image: linear-gradient( #000000, rgb(15, 15, 15), rgb(11, 122, 248), rgb(0, 217, 255));
+    background-color: black;
 }
 
 #definition{
@@ -39,7 +39,20 @@ html{
     margin-left: 5%;
 }
 
-.onEarth{
+.scene{
+    --g1:'black';
+    --g2:'black';
+    --h: 100vh;
+    --b: 0vh;
+    position: absolute;
+    height: var(--h);
+    width: 100%;
+    bottom: var(--b);
+    background-image: linear-gradient(var(--g2), var(--g1));
+    transition: 1s;
+}
+
+.Obj{
     --pos:60%;
     --h:500px;
     --b:0px;
@@ -88,14 +101,14 @@ html{
     white-space:pre-wrap;
 }
 
-.atmosphere{
-    --h:500px;
+.sceneInfo{
     --fc:black;
     margin-left: 25%;
     width: 50%;
     text-align: center;
     position: absolute;
-    bottom: var(--h);
+    top: 50vh;
+    transform: translate(0,50%);
     opacity: .75;
     color: var(--fc);
 }

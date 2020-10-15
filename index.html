@@ -22,15 +22,20 @@
         </div>
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
-        <div v-for="o in onEarth">
-            <img class="onEarth"  :id="o.id" :src="o.img" alt="" @click="openDefinition(o.name, o.definition)"
-            :style="{'--pos': o.realpos +'%', '--h': o.realh * scale, '--b': o.realbottom}">
-        </div>
-        <div v-for="at in atmosphere">
-            <div class="atmosphere" :id="at.name" :style="{'--h': at.h, '--fc': at.color}">
-                <h1>{{at.name}}</h1>
-                <p>{{at.info}}</p>
+        <div v-for="s in scenes" :id="s.id" class="scene" 
+        :style="{'--g1': s.colorG1, '--g2': s.colorG2, '--h': s.height +'vh', '--b': s.where +'vh'}">
+
+            <img v-for="o in s.actObj" class="Obj" :id="o.id" :src="o.img" alt="" @click="openDefinition(o.name, o.definition)"
+            :style="{'--pos': o.realpos +'%', '--h': o.realh * s.scale, '--b': o.realbottom}">
+
+            <div v-for="b in s.bgObj" v-bind:class="b.ClassObj"
+            :style="{'--pos': b.pos +'%', '--b': b.bottom +'vh'}"></div>
+
+            <div class="sceneInfo" :id="s.id" :style="{'--fc': s.fontColor}">
+                <h1>{{s.name}}</h1>
+                <p>{{s.info}}</p>
             </div>
+
         </div>
     </div>
 
@@ -49,6 +54,7 @@
                     {
                         no:1,
                         height:100,
+                        where:0,
                         id:'ground',
                         colorG1:'#b6eef4',
                         colorG2:'#b6eef4',
@@ -250,6 +256,7 @@
                     {
                         no:2,
                         height:100,
+                        where:0,
                         id:'Troposphere',
                         colorG1:'#b6eef4',
                         colorG2:'#baeeef',
@@ -263,6 +270,7 @@
                     {
                         no:3,
                         height:100,
+                        where:0,
                         id:'at24km',
                         colorG1:'#baeeef',
                         colorG2:'#cadfee',
@@ -276,6 +284,7 @@
                     {
                         no:4,
                         height:100,
+                        where:0,
                         id:'',
                         colorG1:'#cadfee',
                         colorG2:'#cadfee',
@@ -289,6 +298,7 @@
                     {
                         no:5,
                         height:200,
+                        where:0,
                         id:'at48km',
                         colorG1:'#cadfee',
                         colorG2:'#9cafbe',
@@ -302,6 +312,7 @@
                     {
                         no:6,
                         height:200, //64km
+                        where:0,
                         id:'Mesosphere',
                         colorG1:'#9cafbe',
                         colorG2:'#9cafbe',
@@ -315,6 +326,7 @@
                     {
                         no:7,
                         height:1500, 
+                        where:0,
                         id:'at184km',
                         colorG1:'#9cafbe',
                         colorG2:'#232B65',
@@ -328,6 +340,7 @@
                     {
                         no:8,
                         height:2500, //384km
+                        where:0,
                         id:'Thermosphere',
                         colorG1:'#232B65',
                         colorG2:'#1D213C',
@@ -341,6 +354,7 @@
                     {
                         no:9,
                         height:2500, //684km
+                        where:0,
                         id:'Exosphere',
                         colorG1:'#1D213C',
                         colorG2:'#0A0B0F',
@@ -354,6 +368,7 @@
                     {
                         no:10,
                         height:2500, //884km
+                        where:0,
                         id:'at884km',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
@@ -367,6 +382,7 @@
                     {
                         no:11,
                         height:2500, //1084km
+                        where:0,
                         id:'Magnetosphere',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
@@ -380,6 +396,7 @@
                     {
                         no:12,
                         height:5000, //???
+                        where:0,
                         id:'beforeGEO',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
@@ -393,6 +410,7 @@
                     {
                         no:13,
                         height:5000, //35780km
+                        where:0,
                         id:'GEO',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
@@ -406,6 +424,7 @@
                     {
                         no:14,
                         height:500, //end
+                        where:0,
                         id:'end',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
@@ -444,6 +463,12 @@
                 }
             }
         })
+
+        let accuHeight = 0;
+        for (let index = 0; index < app.scenes.length; index++) {
+            app.scenes[index].where = (0 + accuHeight);
+            accuHeight += app.scenes[index].height;
+        }
 
         window.addEventListener("scroll", () => {
             //set attribute for using in many context
