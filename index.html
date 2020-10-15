@@ -25,7 +25,7 @@
         <div v-for="s in scenes" :id="s.id" class="scene" 
         :style="{'--g1': s.colorG1, '--g2': s.colorG2, '--h': s.height +'vh', '--b': s.where +'vh'}">
 
-            <img v-for="o in s.actObj" class="Obj" :id="o.id" :src="o.img" alt="" @click="openDefinition(o.name, o.definition)"
+            <img v-for="o in s.actObj" class="actObj" :id="o.id" :src="o.img" alt="" @click="openDefinition(o.name, o.definition)"
             :style="{'--pos': o.realpos +'%', '--h': o.realh * s.scale, '--b': o.realbottom}">
 
             <div v-for="b in s.bgObj" v-bind:class="b.ClassObj"
@@ -279,7 +279,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:''
+                        info:'wait'
                     },
                     {
                         no:4,
@@ -307,7 +307,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:''
+                        info:'wait'
                     },
                     {
                         no:6,
@@ -335,7 +335,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:''
+                        info:'wait'
                     },
                     {
                         no:8,
@@ -377,7 +377,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:''
+                        info:'wait'
                     },
                     {
                         no:11,
@@ -405,7 +405,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:''
+                        info:'wait'
                     },
                     {
                         no:13,
@@ -419,7 +419,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:''
+                        info:'wait'
                     },
                     {
                         no:14,
@@ -432,7 +432,7 @@
                         scale: 1,
                         bgObj:[],
                         actObj:[],
-                        name:'',
+                        name:'end',
                         info:''
                     },
                 ],
@@ -449,10 +449,13 @@
                 goUp: function(){
                     if (this.scaleIndex < this.scaleList.length-1) {
                         this.scaleIndex += 1;
-                        this.scale = this.scaleList[this.scaleIndex];
+                        this.scenes[0].scale = this.scaleList[this.scaleIndex];
                     }
                     else if (this.scaleIndex >= this.scaleList.length-1) {
-                        
+                        this.scenes.forEach(scene => {
+                            scene.where -= this.scenes[this.scaleIndex - this.scaleList.length + 2].height;
+                        });
+                        this.scaleIndex += 1;
                     }
                 },
                 goDown: function(){

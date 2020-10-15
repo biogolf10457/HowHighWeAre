@@ -5,7 +5,7 @@ html{
 #world{
     height: 100vh;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     /*overflow: hidden;*/
@@ -52,7 +52,7 @@ html{
     transition: 1s;
 }
 
-.Obj{
+.actObj{
     --pos:60%;
     --h:500px;
     --b:0px;
@@ -64,7 +64,7 @@ html{
     transition: .5s;
 }
 
-.onEarth:hover{
+.actObj:hover{
     filter: brightness(150%);
 }
 
@@ -108,7 +108,7 @@ html{
     text-align: center;
     position: absolute;
     top: 50vh;
-    transform: translate(0,50%);
+    transform: translate(0,-50%);
     opacity: .75;
     color: var(--fc);
 }
