@@ -32,7 +32,7 @@
                 <p>{{at.info}}</p>
             </div>
         </div>
-
+        
     </div>
 
     <script>
@@ -44,6 +44,19 @@
         let app = new Vue({
             el:'#world',
             data:{
+                scenes:[
+                    {
+                        no:1,
+                        height:100,
+                        id:'',
+                        colorG1:'',
+                        colorG2:'',
+                        bgObj:[],
+                        actObj:[],
+                        name:'',
+                        info:''
+                    }
+                ],
                 scale: 200,
                 scaleIndex: 0,
                 scaleList: [200, 30, 18, 12, 7.5, 1.4, 0.18, 0.08],
@@ -295,7 +308,7 @@
                         this.scale = this.scaleList[this.scaleIndex];
                     }
                     else if (this.scaleIndex >= this.scaleList.length-1) {
-                        document.getElementById("Troposphere").scrollIntoView();
+                        
                     }
                 },
                 goDown: function(){
@@ -307,7 +320,6 @@
             }
         })
 
-        
         window.addEventListener("scroll", () => {
             //set attribute for using in many context
             let bodyRect = document.body.getBoundingClientRect();
@@ -341,9 +353,8 @@
             }else{
                 appeverest.realpos = appeverest.pos
             }*/
-
+            
         });
-
     </script>
 </body>
 </html>
