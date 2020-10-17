@@ -2,6 +2,101 @@ html{
     scroll-behavior: smooth;
 }
 
+#intro{
+    position: fixed;
+    height: 90vh;
+    width: 90%;
+    top: 5vh;
+    right: 5%;
+    background-image: linear-gradient(to right,#f5d5f7, #6f5597);
+    border-radius: 50px;
+    z-index: 3;
+    transition: 1s;
+}
+#introTitle{
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%,-50%);
+}
+#n1{
+    transform: translate(-10%,0);
+    font-size: 2em;
+}
+#n2{
+    transform: translate(20%,0);
+    font-size: 2em;
+}
+#intro .button{
+    width: 100%;
+    margin: 5%;
+    text-align: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #6f5597;
+    border-radius: 50px;
+}
+#intro .button:hover{
+    filter: brightness(120%);
+    box-shadow: 4px 4px 8px rgb(205, 180, 228);
+}
+
+#aboutUs{
+    position: fixed;
+    height: 90vh;
+    width: 90%;
+    top: 5vh;
+    left: 100%;
+    background-image: linear-gradient(to right,#f5d5f7, #6f5597);
+    border-radius: 50px;
+    z-index: 4;
+    transition: 1s;
+}
+.abox{
+    display: inline-block;
+    margin-left: 5%;
+    width: 26%;
+    margin-top: 5%;
+    height: 33%;
+    text-align: center;
+}
+
+.admin{
+    width: 60%;
+    height: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.adName{
+    width: 100%;
+    height: 20%;
+    background-color: darkorange;
+    display: block;
+}
+#admin1{
+    background-image: url(admin/golf.PNG);
+}
+#admin2{
+    background-image: url(admin/garfield.jpg);
+}
+#admin3{
+    background-image: url(admin/jinny.jpg);
+}
+#admin4{
+    background-image: url(admin/wei.jpg);
+}
+#admin5{
+    background-image: url(admin/pang.jpg);
+}
+
+#aboxnon{
+    opacity: 0;
+}
+
 #world{
     height: 100vh;
     width: 100%;
@@ -81,9 +176,17 @@ html{
     bottom: var(--b);
     transition: 1s;
 }
-
 .actObj:hover{
     filter: brightness(150%);
+}
+
+.bgObj{
+    --pos:60%;
+    --t:50px;
+    position: absolute;
+    transform: translate(-50%,0);
+    left: var(--pos);
+    top: var(--t);
 }
 
 .floatObject{
@@ -172,8 +275,48 @@ body {
     z-index: 20;
 }
 
-/*code from https://codepen.io/rsbear/pen/ZpXJVp*/
+.ozone{
+    width: 5vh;
+    height: 5vh;
+    background-image: url(img/ozone.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .8;
+}
+.hydrogen{
+    width: 5vh;
+    height: 5vh;
+    background-image: url(img/hydrogen.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .8;
+}
+.helium{
+    width: 5vh;
+    height: 5vh;
+    background-image: url(img/helium.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .8;
+}
 
+.shootingStar{
+    width: 30vh;
+    height: 30vh;
+    background-image: url(img/shootingStar.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.star{
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px white;
+}
+
+/*---------------------- code from https://codepen.io/rsbear/pen/ZpXJVp ------------------*/
 .close-container{
   position: absolute;
   margin: auto;
@@ -231,4 +374,34 @@ label{
 .close-container:hover label{
   opacity: 1;
 }
+/*---------------------------------------------------------------------------- */
 
+/*-----------code from https://lauryndbrown.github.io/2017/06/08/creating-clouds-in-css.html----------------- */
+.cloud{ 
+    margin-top:70px;
+    width:350px;
+    height:120px;
+    background:#ECEFF1;
+    box-shadow: 10px 10px rgba(0,0,0,0.2);
+    border-radius:100px;
+ }
+ .cloud::after, .cloud::before{
+     content:"";
+     position:relative;
+     display:inline-block;
+     background:inherit;
+     border-radius:inherit;
+ }
+ .cloud::after{
+     width:100px;
+     height:100px;
+     top:-220px;
+     left:50px;
+ }
+ .cloud::before{
+     width:180px;
+     height:180px;
+     top: -70px;
+     left:130px;
+ }
+/*---------------------------------------------------------------------------- */

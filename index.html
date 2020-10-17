@@ -9,9 +9,16 @@
 </head>
 <body>
     <div id="world">
+        <div id="intro">
+            <div id="introTitle">
+                <div id="n1"><h1>How High</h1></div>
+                <div id="n2"><h1>We Are</h1></div>
+                <div class="button" @click="start">Let's Go</div>
+            </div>
+        </div>
         <div id="definition">
             <div class="waves">
-                <svg width="100%" height="100vh" fill="none">
+                <svg height="100vh" fill="none">
                     <path
                         fill="#6f5597"
                         d="
@@ -70,8 +77,40 @@
         <div id="menu">
             <div @click="goToBottom()">Go to Bottom</div>
             <div @click="goToTop()">Go to Top</div>
-            <div>About us</div>
+            <div @click="openAboutUs()">About us</div>
         </div>
+        <div id="aboutUs">
+            <div class="abox">
+                <div class="admin" id="admin1"></div>
+                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+            </div>
+            <div class="abox">
+                <div class="admin" id="admin2"></div>
+                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+            </div>
+            <div class="abox" id="aboxnon">
+                <div class="admin"></div>
+                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+            </div>
+            <div class="abox">
+                <div class="admin" id="admin3"></div>
+                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+            </div>
+            <div class="abox">
+                <div class="admin" id="admin4"></div>
+                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+            </div>
+            <div class="abox">
+                <div class="admin" id="admin5"></div>
+                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+            </div>
+            <div class="close-container" @click="closeAboutUs">
+                <div class="leftright"></div>
+                <div class="rightleft"></div>
+                <label class="close">close</label>
+            </div> 
+        </div>
+
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
         <div v-for="s in scenes" :id="s.id" class="scene" 
@@ -81,7 +120,7 @@
             :style="{'--pos': o.realpos +'%', '--h': (o.realh * s.scale)+'px', '--b': o.realbottom+'vh'}">
 
             <div v-for="b in s.bgObj" v-bind:class="b.ClassObj"
-            :style="{'--pos': b.pos +'%', '--b': b.bottom +'vh'}"></div>
+            :style="{'--pos': b.pos +'%', '--t': b.top +'vh'}"></div>
 
             <div class="sceneInfo" :id="s.id" :style="{'--fc': s.fontColor}">
                 <h1>{{s.name}}</h1>
@@ -117,8 +156,8 @@
                             {
                                 id:'everest',
                                 name:'ยอดเขาเอเวอเรสต์',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:53,//หน่วย%
+                                realpos:53, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:8848,//หน่วยpx
@@ -131,8 +170,8 @@
                             {
                                 id:'fuji',
                                 name:'ภูเขาไฟฟูจิ',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:62,//หน่วย%
+                                realpos:62, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:3776,//หน่วยpx
@@ -146,8 +185,8 @@
                             {
                                 id:'Taipei101',
                                 name:'Taipei 101',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:61,//หน่วย%
+                                realpos:61, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:509.2,//หน่วยpx
@@ -160,13 +199,13 @@
                             {
                                 id:'biyok2',
                                 name:'ตึกใบหยก 2',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:45,//หน่วย%
+                                realpos:45, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:304,//หน่วยpx
                                 realh:304, //ความสูงจริงบนเว็บ
-                                definition:'เป็นตึกระฟ้าในกรุงเทพมหานคร ปัจจุบันเป็นตึกที่สูงเป็นลำดับที่ 4 ของประเทศไทย และเคยเป็นตึกที่สูงที่สุดในประเทศไทยระหว่าง พ.ศ. 2540 - 2559 ก่อนถูกทำลายสถิติโดยตึกคิง เพาเวอร์ มหานครตึกใบหยก 2 ที่ความสูง 54 เมตร (150 ฟุต)',
+                                definition:'เป็นตึกระฟ้าในกรุงเทพมหานคร ปัจจุบันเป็นตึกที่สูงเป็นลำดับที่ 4 ของประเทศไทย และเคยเป็นตึกที่สูงที่สุดในประเทศไทยระหว่าง พ.ศ. 2540 - 2559 ก่อนถูกทำลายสถิติโดยตึกคิง เพาเวอร์ มหานครซึ่งตึกใบหยก 2 เป็นตึกที่ครองตำแหน่งตึกที่สูงที่สุดในไทยนานที่สุดเป็นเวลา 19 ปี ',
                                 defh:'304 m', //ความสูงจริงบนโลก
                                 img:'human.svg',
                                 realImg:'img/baiyoke2.jpg'
@@ -174,8 +213,8 @@
                             { 
                                 id:'pyramidKhufu',
                                 name:'พีระมิดคูฟู',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:66,//หน่วย%
+                                realpos:66, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:146.7,//หน่วยpx
@@ -188,8 +227,8 @@
                             { 
                                 id:'hyperion',
                                 name:'Hyperion Tree',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:58,//หน่วย%
+                                realpos:58, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:115.92,//หน่วยpx
@@ -202,8 +241,8 @@
                             {
                                 id:'statueOfLiberty',
                                 name:'เทพีเสรีภาพ',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:75,//หน่วย%
+                                realpos:75, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:93,//หน่วยpx
@@ -217,8 +256,8 @@
                             {
                                 id:'colosseum',
                                 name:'สนามกีฬาโคลอสเซียม',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:48,//หน่วย%
+                                realpos:48, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:57,//หน่วยpx
@@ -232,8 +271,8 @@
                             {
                                 id:'jesusChrist',
                                 name:'รูปปั้นพระเยซูคริสต์',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:62,//หน่วย%
+                                realpos:62, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:38,//หน่วยpx
@@ -246,8 +285,8 @@
                             {
                                 id:'babylon',
                                 name:'สวนลอยบาบิโลน',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:50,//หน่วย%
+                                realpos:50, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:22.86,//หน่วยpx
@@ -260,8 +299,8 @@
                             {
                                 id:'gundam',
                                 name:'Gundam Yokohama 1/1',
-                                pos:60,//หน่วย%
-                                realpos:60, //ตำแหน่งจากleftจริงบนเว็บ
+                                pos:70,//หน่วย%
+                                realpos:70, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:0,//หน่วยvh
                                 realbottom:0, //ตำแหน่งจากbottomจริงบนเว็บ
                                 h:18,//หน่วยpx
@@ -298,7 +337,10 @@
                         colorG2:'#baeeef',
                         fontColor:'black',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{cloud:true,bgObj:true},top:20,pos:20}, {ClassObj:{cloud:true,bgObj:true},top:55,pos:40},
+                            {ClassObj:{cloud:true,bgObj:true},top:30,pos:65}, {ClassObj:{cloud:true,bgObj:true},top:62,pos:88}
+                        ],
                         actObj:[
                             {
                                 id:'ruppel',
@@ -314,20 +356,6 @@
                                 img:'human.svg',
                                 realImg:'img/นกแร้งรัพเพลล์/Ruppell01.jpg'
                             },
-                            {
-                                id:'boeing777',
-                                name:'เครื่องบิน Boeing777',
-                                pos:60,//หน่วย%
-                                realpos:60,//ตำแหน่งจากleftจริงบนเว็บ
-                                b:70,//หน่วยvh
-                                realbottom:70, //ตำแหน่งจากbottomจริงบนเว็บ
-                                h: 200,//หน่วยpx
-                                realh: 200,//ความสูงจริงบนเว็บ
-                                definition:'ยกตัวอย่างเครื่อง Boeing 777 ความสูงสูงสุดที่ทำได้ประมาณ 43,100 ฟุต เครื่องที่เล็กลงมาหน่อยอย่างแอร์บัส A320 ทำความสูงได้ประมาณ 39,800 (12.1 กิโลเมตร โดยประมาณ)',
-                                defh:'13,136.88 m', //ความสูงจริงบนโลก
-                                img:'human.svg',
-                                realImg:'img/boeing777.jpg'
-                            },
 
                         ],
                         name:'Troposphere',
@@ -342,10 +370,27 @@
                         colorG2:'#cadfee',
                         fontColor:'black',
                         scale: 1,
-                        bgObj:[],
-                        actObj:[],
+                        bgObj:[
+                            
+                        ],
+                        actObj:[
+                            {
+                                id:'boeing777',
+                                name:'เครื่องบิน Boeing777',
+                                pos:70,//หน่วย%
+                                realpos:70,//ตำแหน่งจากleftจริงบนเว็บ
+                                b:60,//หน่วยvh
+                                realbottom:60, //ตำแหน่งจากbottomจริงบนเว็บ
+                                h: 200,//หน่วยpx
+                                realh: 200,//ความสูงจริงบนเว็บ
+                                definition:'ยกตัวอย่างเครื่อง Boeing 777 ความสูงสูงสุดที่ทำได้ประมาณ 43,100 ฟุต เครื่องที่เล็กลงมาหน่อยอย่างแอร์บัส A320 ทำความสูงได้ประมาณ 39,800 (12.1 กิโลเมตร โดยประมาณ)',
+                                defh:'13,136.88 m', //ความสูงจริงบนโลก
+                                img:'human.svg',
+                                realImg:'img/boeing777.jpg'
+                            },
+                        ],
                         name:'',
-                        info:'wait'
+                        info:'ตอนนี้พวกเราอยู่สูงเกิน 10 กิโลเมตรกันแล้ว'
                     },
                     {
                         no:4,
@@ -356,7 +401,13 @@
                         colorG2:'#cadfee',
                         fontColor:'black',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{ozone:true,bgObj:true},top:10,pos:10}, {ClassObj:{ozone:true,bgObj:true},top:5,pos:55},
+                            {ClassObj:{ozone:true,bgObj:true},top:30,pos:40}, {ClassObj:{ozone:true,bgObj:true},top:20,pos:82},
+                            {ClassObj:{ozone:true,bgObj:true},top:50,pos:33}, {ClassObj:{ozone:true,bgObj:true},top:40,pos:61},
+                            {ClassObj:{ozone:true,bgObj:true},top:80,pos:15}, {ClassObj:{ozone:true,bgObj:true},top:70,pos:60},
+                            {ClassObj:{ozone:true,bgObj:true},top:90,pos:38}, {ClassObj:{ozone:true,bgObj:true},top:81,pos:90},
+                        ],
                         actObj:[],
                         name:'Stratosphere',
                         info:'เป็นชั้นบรรยากาศของโลกชั้นที่สอง อยู่ระหว่างชั้นโทรโพสเฟียร์และมีโซสเฟียร์ มีระยะตั้งแต่ความสูง 10 กิโลเมตร จนถึง 50 กิโลเมตร เครื่องบินจะบินอยู่ในชั้นนี้ มีอากาศเบาบาง เมฆน้อยมาก เนื่องจากปริมาณไอน้ำน้อย อากาศไม่แปรปรวน มีแก๊สโอโซนมาก',
@@ -370,10 +421,14 @@
                         colorG2:'#9cafbe',
                         fontColor:'black',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{ozone:true,bgObj:true},top:150,pos:33}, {ClassObj:{ozone:true,bgObj:true},top:140,pos:61},
+                            {ClassObj:{ozone:true,bgObj:true},top:180,pos:15}, {ClassObj:{ozone:true,bgObj:true},top:170,pos:60},
+                            {ClassObj:{ozone:true,bgObj:true},top:190,pos:38}, {ClassObj:{ozone:true,bgObj:true},top:181,pos:90},
+                        ],
                         actObj:[],
                         name:'',
-                        info:'wait'
+                        info:'ผ่านมาแล้วสองชั้นบรรยากาศ \n\n ไปต่อกันเถอะ'
                     },
                     {
                         no:6,
@@ -384,10 +439,12 @@
                         colorG2:'#9cafbe',
                         fontColor:'black',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{shootingStar:true,bgObj:true},top:20,pos:23},{ClassObj:{shootingStar:true,bgObj:true},top:50,pos:78},
+                        ],
                         actObj:[],
                         name:'Mesosphere',
-                        info:' เป็นชั้นบรรยากาศของโลกชั้นที่สาม อยู่ระหว่างชั้นสตราโทสเฟียร์และเทอร์โมสเฟียร์ มีระยะตั้งแต่ความสูง 50 กิโลเมตร จนถึง 85 กิโลเมตร ซึ่งอุณหภูมิจะลดลงตามลำดับความสูง และเป็นชั้นสุดท้ายที่มีสภาพอากาศเหมือนชั้นโทรโพสเฟียร์ กับสตราโตสเฟียร์ เมื่อมีวัตถุจากอวกาศตกลงมาบนผิวโลก เมื่อถึงชั้นบรรยากาศนี้จะถูกเผาไหม้ก่อนถึงพื้น',
+                        info:'เป็นชั้นบรรยากาศของโลกชั้นที่สาม อยู่ระหว่างชั้นสตราโทสเฟียร์และเทอร์โมสเฟียร์ มีระยะตั้งแต่ความสูง 50 กิโลเมตร จนถึง 85 กิโลเมตร ซึ่งอุณหภูมิจะลดลงตามลำดับความสูง และเป็นชั้นสุดท้ายที่มีสภาพอากาศเหมือนชั้นโทรโพสเฟียร์ กับสตราโตสเฟียร์ เมื่อมีวัตถุจากอวกาศตกลงมาบนผิวโลก เมื่อถึงชั้นบรรยากาศนี้จะถูกเผาไหม้ก่อนถึงพื้น',
                     },
                     {
                         no:7,
@@ -401,7 +458,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:'wait'
+                        info:'ตอนนี้พวกเราขึ้นมา 184 กิโลเมตรแล้วนะ'
                     },
                     {
                         no:8,
@@ -426,17 +483,23 @@
                         colorG2:'#0A0B0F',
                         fontColor:'white',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{hydrogen:true,bgObj:true},top:10,pos:10}, {ClassObj:{helium:true,bgObj:true},top:5,pos:55},
+                            {ClassObj:{helium:true,bgObj:true},top:30,pos:40}, {ClassObj:{hydrogen:true,bgObj:true},top:20,pos:92},
+                            {ClassObj:{hydrogen:true,bgObj:true},top:50,pos:33}, {ClassObj:{helium:true,bgObj:true},top:40,pos:61},
+                            {ClassObj:{helium:true,bgObj:true},top:80,pos:15}, {ClassObj:{hydrogen:true,bgObj:true},top:70,pos:60},
+                            {ClassObj:{hydrogen:true,bgObj:true},top:90,pos:38}, {ClassObj:{helium:true,bgObj:true},top:81,pos:90},
+                        ],
                         actObj:[
                             {
                                 id:'LEO',
                                 name:'Low Earth Orbit "LEO"',
-                                pos:70,//หน่วย%
-                                realpos:70, //ตำแหน่งจากleftจริงบนเว็บ
-                                b:2450,//หน่วยvh
-                                realbottom:2450, //ตำแหน่งจากbottomจริงบนเว็บ
-                                h:300,//หน่วยpx
-                                realh:300, //ความสูงจริงบนเว็บ
+                                pos:80,//หน่วย%
+                                realpos:80, //ตำแหน่งจากleftจริงบนเว็บ
+                                b:2460,//หน่วยvh
+                                realbottom:2460, //ตำแหน่งจากbottomจริงบนเว็บ
+                                h:200,//หน่วยpx
+                                realh:200, //ความสูงจริงบนเว็บ
                                 definition:'วงโคจรระยะต่ำ (Low Earth Orbit "LEO") อยู่สูงจากพื้นโลกไม่เกิน 1,000 กม. ใช้ในการสังเกตการณ์ สำรวจสภาวะแวดล้อม, ถ่ายภาพ ไม่สามารถใช้งานครอบคลุมบริเวณใดบริเวณหนึ่งได้ตลอดเวลา เพราะมีความเร็วในการเคลื่อนที่สูง แต่จะสามารถบันทึกภาพคลุมพื้นที่ตามเส้นทางวงโคจรที่ผ่านไป ตามที่สถานีภาคพื้นดินจะกำหนดเส้นทางโคจรอยู่ในแนวขั้วโลก (Polar Orbit) ดาวเทียมวงโคจรระยะต่ำขนาดใหญ่บางดวงสามารถมองเห็นได้ด้วยตาเปล่าในเวลาค่ำ หรือก่อนสว่าง เพราะดาวเทียมจะสว่างเป็นจุดเล็ก ๆ เคลื่อนที่ผ่านในแนวนอนอย่างรวดเร็ว',
                                 defh:'น้อยกว่า 1000 km', //ความสูงจริงบนโลก
                                 img:'human.svg',
@@ -465,8 +528,8 @@
                                 realpos:70, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:1200,//หน่วยvh
                                 realbottom:1200, //ตำแหน่งจากbottomจริงบนเว็บ
-                                h:300,//หน่วยpx
-                                realh:300, //ความสูงจริงบนเว็บ
+                                h:200,//หน่วยpx
+                                realh:200, //ความสูงจริงบนเว็บ
                                 definition:'ในปี พ.ศ. 2533 องค์การนาซาได้ส่งกล้องโทรทรรศน์อวกาศฮับเบิล (Hubble Space Telescope) ขึ้นไปประจำในวงโคจรรอบโลกที่ความสูง 600 กิโลเมตรเหนือผิวโลก บรรยากาศที่ความสูงดังกล่าวนี้เบาบางเทียบได้กับสภาวะสุญญากาศ ในการสังเกตการณ์ทางดาราศาสตร์ที่ระดับความสูงดังกล่าวจึงไม่มีผลกระทบจากบรรยากาศ',
                                 defh:'600 km', //ความสูงจริงบนโลก
                                 img:'human.svg',
@@ -474,7 +537,7 @@
                             },
                         ],
                         name:'',
-                        info:'wait'
+                        info:'เอ๊ะ ? \n\n นี่มันอะไรกันนะ'
                     },
                     {
                         no:11,
@@ -488,7 +551,7 @@
                         bgObj:[],
                         actObj:[],
                         name:'',
-                        info:'wait'
+                        info:'ใกล้จะถึงปลายทางของเว็บเราแล้ว T_T \n\n เสียใจกันไหม ?'
                     },
                     {
                         no:12,
@@ -499,31 +562,91 @@
                         colorG2:'#0A0B0F',
                         fontColor:'white',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{star:true,bgObj:true},top:10,pos:10}, {ClassObj:{star:true,bgObj:true},top:5,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:30,pos:40}, {ClassObj:{star:true,bgObj:true},top:20,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:50,pos:33}, {ClassObj:{star:true,bgObj:true},top:40,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:80,pos:15}, {ClassObj:{star:true,bgObj:true},top:70,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:90,pos:38}, {ClassObj:{star:true,bgObj:true},top:81,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:110,pos:10}, {ClassObj:{star:true,bgObj:true},top:105,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:130,pos:40}, {ClassObj:{star:true,bgObj:true},top:120,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:150,pos:33}, {ClassObj:{star:true,bgObj:true},top:140,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:180,pos:15}, {ClassObj:{star:true,bgObj:true},top:170,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:190,pos:38}, {ClassObj:{star:true,bgObj:true},top:181,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:210,pos:10}, {ClassObj:{star:true,bgObj:true},top:205,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:230,pos:40}, {ClassObj:{star:true,bgObj:true},top:220,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:250,pos:33}, {ClassObj:{star:true,bgObj:true},top:240,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:280,pos:15}, {ClassObj:{star:true,bgObj:true},top:270,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:290,pos:38}, {ClassObj:{star:true,bgObj:true},top:281,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:310,pos:10}, {ClassObj:{star:true,bgObj:true},top:305,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:330,pos:40}, {ClassObj:{star:true,bgObj:true},top:320,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
+                            
+                            {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:480,pos:15}, {ClassObj:{star:true,bgObj:true},top:470,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:490,pos:38}, {ClassObj:{star:true,bgObj:true},top:481,pos:90},
+                        ],
                         actObj:[],
                         name:'Magnetosphere',
                         info:'ชั้นนี้มีความสูงมากกว่า 900 กิโลเมตร ไม่มีก๊าซใดๆ อยู่เลย สนามแม่เหล็กโลก (Magnetosphere)  สนามแม่เหล็กโลกเกิดจากการกระบวนการไดนาโมของโลก กล่าวคือโลหะหนักที่มีสถานะเป็นของเหลวที่อยู่ในแกนโลกมีการหมุนวน ทำให้เกิดสนามแม่เล็กที่เอียงทำมุมประมาณ 10 องศาจากแกนหมุนของโลก ที่ผิวโลกมีความเข้มของสนามแม่เหล็กโลกประมาณ 30,000 - 60,000 นาโนเทสลา และความเข้มจะค่อยๆ ลดลงเมื่ออยู่ห่างจากผิวโลกมากขึ้น',
                     },
                     {
                         no:13,
-                        height:5000, //???
+                        height:500, //???
                         where:0,
                         id:'beforeGEO',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
                         fontColor:'white',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{star:true,bgObj:true},top:10,pos:10}, {ClassObj:{star:true,bgObj:true},top:5,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:30,pos:40}, {ClassObj:{star:true,bgObj:true},top:20,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:50,pos:33}, {ClassObj:{star:true,bgObj:true},top:40,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:80,pos:15}, {ClassObj:{star:true,bgObj:true},top:70,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:90,pos:38}, {ClassObj:{star:true,bgObj:true},top:81,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:110,pos:10}, {ClassObj:{star:true,bgObj:true},top:105,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:130,pos:40}, {ClassObj:{star:true,bgObj:true},top:120,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:150,pos:33}, {ClassObj:{star:true,bgObj:true},top:140,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:180,pos:15}, {ClassObj:{star:true,bgObj:true},top:170,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:190,pos:38}, {ClassObj:{star:true,bgObj:true},top:181,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:210,pos:10}, {ClassObj:{star:true,bgObj:true},top:205,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:230,pos:40}, {ClassObj:{star:true,bgObj:true},top:220,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:250,pos:33}, {ClassObj:{star:true,bgObj:true},top:240,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:280,pos:15}, {ClassObj:{star:true,bgObj:true},top:270,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:290,pos:38}, {ClassObj:{star:true,bgObj:true},top:281,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:310,pos:10}, {ClassObj:{star:true,bgObj:true},top:305,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:330,pos:40}, {ClassObj:{star:true,bgObj:true},top:320,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
+                            
+                            {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:480,pos:15}, {ClassObj:{star:true,bgObj:true},top:470,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:490,pos:38}, {ClassObj:{star:true,bgObj:true},top:481,pos:90},
+                        ],
                         actObj:[
                             {
                                 id:'MEO',
                                 name:'Medium Earth Orbit "MEO"',
-                                pos:70,//หน่วย%
-                                realpos:70, //ตำแหน่งจากleftจริงบนเว็บ
-                                b:4950,//หน่วยvh
-                                realbottom:4950, //ตำแหน่งจากbottomจริงบนเว็บ
-                                h:300,//หน่วยpx
-                                realh:300, //ความสูงจริงบนเว็บ
+                                pos:75,//หน่วย%
+                                realpos:75, //ตำแหน่งจากleftจริงบนเว็บ
+                                b:4960,//หน่วยvh
+                                realbottom:4960, //ตำแหน่งจากbottomจริงบนเว็บ
+                                h:200,//หน่วยpx
+                                realh:200, //ความสูงจริงบนเว็บ
                                 definition:'วงโคจรระยะปานกลาง (Medium Earth Orbit "MEO") อยู่ที่ระยะความสูงตั้งแต่ 1,000 กม. ขึ้นไป ส่วนใหญ่ใช้ในด้านอุตุนิยมวิทยา และสามารถใช้ในการติดต่อสื่อสารเฉพาะพื้นที่ได้ แต่หากจะติดต่อให้ครอบคลุมทั่วโลกจะต้องใช้ดาวเทียมหลายดวงในการส่งผ่าน',
                                 defh:'มากกว่า 1000 km', //ความสูงจริงบนโลก
                                 img:'human.svg',
@@ -531,18 +654,48 @@
                             },
                         ],
                         name:'',
-                        info:'wait'
+                        info:'นัยของความสูงเริ่มหมดไปเรื่อย ๆ แล้ว \n เพราะในอวกาศ เริ่มไม่มีทิศทางแล้วล่ะ'
                     },
                     {
                         no:14,
-                        height:5000, //35780km
+                        height:500, //35780km
                         where:0,
                         id:'GEO',
                         colorG1:'#0A0B0F',
                         colorG2:'#0A0B0F',
                         fontColor:'white',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{star:true,bgObj:true},top:10,pos:10}, {ClassObj:{star:true,bgObj:true},top:5,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:30,pos:40}, {ClassObj:{star:true,bgObj:true},top:20,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:50,pos:33}, {ClassObj:{star:true,bgObj:true},top:40,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:80,pos:15}, {ClassObj:{star:true,bgObj:true},top:70,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:90,pos:38}, {ClassObj:{star:true,bgObj:true},top:81,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:110,pos:10}, {ClassObj:{star:true,bgObj:true},top:105,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:130,pos:40}, {ClassObj:{star:true,bgObj:true},top:120,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:150,pos:33}, {ClassObj:{star:true,bgObj:true},top:140,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:180,pos:15}, {ClassObj:{star:true,bgObj:true},top:170,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:190,pos:38}, {ClassObj:{star:true,bgObj:true},top:181,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:210,pos:10}, {ClassObj:{star:true,bgObj:true},top:205,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:230,pos:40}, {ClassObj:{star:true,bgObj:true},top:220,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:250,pos:33}, {ClassObj:{star:true,bgObj:true},top:240,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:280,pos:15}, {ClassObj:{star:true,bgObj:true},top:270,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:290,pos:38}, {ClassObj:{star:true,bgObj:true},top:281,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:310,pos:10}, {ClassObj:{star:true,bgObj:true},top:305,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:330,pos:40}, {ClassObj:{star:true,bgObj:true},top:320,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
+                            
+                            {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:480,pos:15}, {ClassObj:{star:true,bgObj:true},top:470,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:490,pos:38}, {ClassObj:{star:true,bgObj:true},top:481,pos:90},
+                        ],
                         actObj:[
                             {
                                 id:'GEO',
@@ -551,16 +704,16 @@
                                 realpos:70, //ตำแหน่งจากleftจริงบนเว็บ
                                 b:4950,//หน่วยvh
                                 realbottom:4950, //ตำแหน่งจากbottomจริงบนเว็บ
-                                h:300,//หน่วยpx
-                                realh:300, //ความสูงจริงบนเว็บ
+                                h:200,//หน่วยpx
+                                realh:200, //ความสูงจริงบนเว็บ
                                 definition:'วงโคจรประจำที่ (Geostationary Earth Orbit "GEO") เป็นดาวเทียมเพื่อการสื่อสารเป็นส่วนใหญ่ อยู่สูงจากพื้นโลกประมาณ 35,780 กม. เส้นทางโคจรอยู่ในแนวเส้นศูนย์สูตร (Equatorial Orbit) ดาวเทียมจะหมุนรอบโลกด้วยความเร็วเชิงมุมเท่ากับโลกหมุนรอบตัวเองทำให้ดู เหมือนลอยนิ่งอยู่เหนือ จุดจุดหนึ่งบนโลกตลอดเวลา (เรียกทั่ว ๆ ไปว่า "ดาวเทียมค้างฟ้า") ดาวเทียมจะอยู่กับที่เมื่อเทียบกับโลกมีวงโคจรอยู่ในระนาบเดียวกันกับ เส้นศูนย์สูตร อยู่สูงจากพื้นโลกประมาณ 35,786 กม. วงโคจรพิเศษนี้เรียกว่า “วงโคจรค้างฟ้า” หรือ “วงโคจรคลาร์ก” (Clarke Belt) เพื่อเป็นเกียรติแก่นาย อาร์เทอร์ ซี. คลาร์ก ผู้นำเสนอแนวคิดเกี่ยวกับวงโคจรนี้ เมื่อ เดือนตุลาคม ค.ศ. 1945',
                                 defh:'35780 km', //ความสูงจริงบนโลก
                                 img:'human.svg',
                                 realImg:'img/earth_orbit.jpg'
                             },
                         ],
-                        name:'',
-                        info:'wait'
+                        name:'35780 กิโลเมตร',
+                        info:'หลังจากจุดนี้ไป ความสูงจะไม่มีความหมาย \n เนื่องจากเราจะหลุดจากแรงโน้มถ่วงของโลกแล้ว'
                     },
                     {
                         no:15,
@@ -571,10 +724,40 @@
                         colorG2:'#0A0B0F',
                         fontColor:'white',
                         scale: 1,
-                        bgObj:[],
+                        bgObj:[
+                            {ClassObj:{star:true,bgObj:true},top:10,pos:10}, {ClassObj:{star:true,bgObj:true},top:5,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:30,pos:40}, {ClassObj:{star:true,bgObj:true},top:20,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:50,pos:33}, {ClassObj:{star:true,bgObj:true},top:40,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:80,pos:15}, {ClassObj:{star:true,bgObj:true},top:70,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:90,pos:38}, {ClassObj:{star:true,bgObj:true},top:81,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:110,pos:10}, {ClassObj:{star:true,bgObj:true},top:105,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:130,pos:40}, {ClassObj:{star:true,bgObj:true},top:120,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:150,pos:33}, {ClassObj:{star:true,bgObj:true},top:140,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:180,pos:15}, {ClassObj:{star:true,bgObj:true},top:170,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:190,pos:38}, {ClassObj:{star:true,bgObj:true},top:181,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:210,pos:10}, {ClassObj:{star:true,bgObj:true},top:205,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:230,pos:40}, {ClassObj:{star:true,bgObj:true},top:220,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:250,pos:33}, {ClassObj:{star:true,bgObj:true},top:240,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:280,pos:15}, {ClassObj:{star:true,bgObj:true},top:270,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:290,pos:38}, {ClassObj:{star:true,bgObj:true},top:281,pos:90},
+
+                            {ClassObj:{star:true,bgObj:true},top:310,pos:10}, {ClassObj:{star:true,bgObj:true},top:305,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:330,pos:40}, {ClassObj:{star:true,bgObj:true},top:320,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
+                            
+                            {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
+                            {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
+                            {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
+                            {ClassObj:{star:true,bgObj:true},top:480,pos:15}, {ClassObj:{star:true,bgObj:true},top:470,pos:60},
+                            {ClassObj:{star:true,bgObj:true},top:490,pos:38}, {ClassObj:{star:true,bgObj:true},top:481,pos:90},
+                        ],
                         actObj:[],
-                        name:'end',
-                        info:''
+                        name:'The End',
+                        info:'ขอบคุณที่รับชม'
                     },
                 ],
                 title:'Test',
@@ -582,6 +765,15 @@
                 imageSrc:'/human.svg'
             },
             methods:{
+                start: function(){
+                    document.querySelector("#intro").style.right = 100+'%';
+                },
+                openAboutUs: function(){
+                    document.querySelector("#aboutUs").style.left = 5+'%';
+                },
+                closeAboutUs: function(){
+                    document.querySelector("#aboutUs").style.left = 100+'%';
+                },
                 openDefinition: function(head, def, img){
                     this.title = head;
                     this.realDefinition = def;
