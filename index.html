@@ -57,11 +57,20 @@
                 <p class="info">{{realDefinition}}</p>
                 <img :src="imageSrc" alt="" style="width: 50%; margin-top: 1vh;">
             </div>
+
+            <!-- code from https://codepen.io/rsbear/pen/ZpXJVp -->
+            <div class="close-container" @click="closeDefinition">
+                <div class="leftright"></div>
+                <div class="rightleft"></div>
+                <label class="close">close</label>
+            </div> 
+            <!-- code from https://codepen.io/rsbear/pen/ZpXJVp -->
+
         </div>
         <div id="menu">
-            <a href="#human">Go to Bottom</a>
-            <a href="#world">Go to Top</a>
-            <a href="">About us</a>
+            <div @click="goToBottom()">Go to Bottom</div>
+            <div @click="goToTop()">Go to Top</div>
+            <div>About us</div>
         </div>
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
@@ -579,6 +588,9 @@
                     this.imageSrc = img;
                     document.querySelector("#definition").style.left = 0;
                 },
+                closeDefinition: function(){
+                    document.querySelector("#definition").style.left = -34+'%';
+                },
                 goUp: function(){
                     if (this.scaleIndex < this.scaleList.length-1) {
                         this.scaleIndex += 1;
@@ -590,7 +602,7 @@
                             scene.where -= this.scenes[this.scaleIndex - this.scaleList.length + 1].height;
                         });
                     }
-                    document.querySelector("#definition").style.left = -34+'%';
+                    this.closeDefinition();
                 },
                 goDown: function(){
                     if (this.scaleIndex > 0 && this.scaleIndex <= this.scaleList.length-1) {
@@ -603,7 +615,17 @@
                             scene.where += this.scenes[this.scaleIndex - this.scaleList.length + 2].height;
                         });
                     }
-                    document.querySelector("#definition").style.left = -34+'%';
+                    this.closeDefinition();
+                },
+                goToTop: function() {
+                    while (this.scaleIndex < this.scaleList.length + this.scenes.length - 2) {
+                        this.goUp();
+                    }
+                },
+                goToBottom: function() {
+                    while (this.scaleIndex > 0) {
+                        this.goDown();
+                    }
                 }
             }
         })
