@@ -18,13 +18,21 @@ html{
     left: -34%;
     width: 36%;
     height: 100vh;
-    background-color: rgb(209, 164, 238);
+    background-color: #f5d5f7;
+    background-image: linear-gradient(to right,#f5d5f7, #6f5597);
     z-index: 2;
-    transition: .2s;
+    transition: .8s;
+    opacity: 1;
 }
 #textbox{
-    margin: 10%;
+    margin-left: 10%;
+    margin-right: 20%;
+    position: absolute;
+    top: 50vh;
+    transform: translate(0,-50%);
     text-align: center;
+    transition: 1s;
+    opacity: 1;
 }
 
 #menu{
@@ -49,7 +57,7 @@ html{
     width: 100%;
     bottom: var(--b);
     background-image: linear-gradient(var(--g2), var(--g1));
-    transition: 1s;
+    transition: 2s;
 }
 
 .actObj{
@@ -61,7 +69,7 @@ html{
     transform: translate(-50%,0);
     height: var(--h);
     bottom: var(--b);
-    transition: .5s;
+    transition: 1.5s;
 }
 
 .actObj:hover{
@@ -111,6 +119,7 @@ html{
     transform: translate(0,-50%);
     opacity: .75;
     color: var(--fc);
+    transition:3s;
 }
 
 body {
@@ -127,4 +136,12 @@ body {
     background-color: blueviolet;
     z-index: 20;
     transition: 5s;
+}
+
+.waves{
+    position: absolute;
+    right: -50%;
+    top: 50vh;
+    transform: translate(0,-50%);
+    z-index: 20;
 }
