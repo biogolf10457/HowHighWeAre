@@ -19,6 +19,7 @@ html{
     left: 50%;
     top: 50vh;
     transform: translate(-50%,-50%);
+    z-index: 2;
 }
 #n1{
     transform: translate(-10%,0);
@@ -166,6 +167,18 @@ html{
     transition: 2s;
 }
 
+.Obj{
+    --pos:60%;
+    --h:500px;
+    --b:0px;
+    position: absolute;
+    left: var(--pos);
+    transform: translate(-50%,0);
+    height: var(--h);
+    bottom: var(--b);
+    z-index: 1;
+}
+
 .actObj{
     --pos:60%;
     --h:500px;
@@ -249,7 +262,7 @@ html{
     transition:3s;
 }
 .sceneInfo p{
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 
 body {
