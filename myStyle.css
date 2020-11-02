@@ -246,13 +246,14 @@ html{
     position: fixed;
     width: 12vh;
     height: 12vh;
-    background-image: url(img/Up3.png);
+    background-image: url(img/next.png);
     background-repeat: no-repeat;
     background-size: cover;
     top: 35vh;
     right: 3%;
     z-index: 2;
     filter: brightness(80%);
+    transform: rotate(90deg);
 }
 #up:hover{
     filter: brightness(110%);
@@ -260,8 +261,8 @@ html{
 }
 #uptop{
     position: fixed;
-    width: 11vh;
-    height: 11vh;
+    width: 12vh;
+    height: 12vh;
     background-image: url(img/last.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -280,13 +281,14 @@ html{
     position: fixed;
     width: 12vh;
     height: 12vh;
-    background-image: url(img/down3.png);
+    background-image: url(img/next.png);
     background-repeat: no-repeat;
     background-size: cover;
     bottom: 35vh;
     right: 3%;
     z-index: 2;
     filter: brightness(80%);
+    transform: rotate(-90deg);
 }
 #down:hover{
     filter: brightness(110%);
@@ -294,8 +296,8 @@ html{
 }
 #downbuttom{
     position: fixed;
-    width: 11vh;
-    height: 11vh;
+    width: 12vh;
+    height: 12vh;
     background-image: url(img/last.png);
     background-repeat: no-repeat;
     background-size: cover;
