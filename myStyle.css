@@ -210,6 +210,19 @@ html{
     font-size: 1.25em;
     text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white;
 }
+#colosseum .defh{
+    left: 30%;
+}
+#hyperion .defh{
+    top: 8%;
+}
+#statueOfLiberty .defh{
+    left: 25%;
+}
+#human .defh{
+    top: 10%;
+    left: 55%;
+}
 
 .bgObj{
     --pos:60%;
