@@ -218,34 +218,72 @@ html{
 
 #up{
     position: fixed;
-    width: 15vh;
-    height: 15vh;
-    background-image: url(img/Up.png);
+    width: 10vh;
+    height: 10vh;
+    background-image: url(img/next.png);
     background-repeat: no-repeat;
     background-size: cover;
-    top: 25vh;
+    top: 35vh;
     right: 3%;
     z-index: 2;
     filter: brightness(80%);
+    transform: rotate(90deg);
 }
 #up:hover{
     filter: brightness(100%);
+    cursor: pointer;
+}
+#uptop{
+    position: fixed;
+    width: 10vh;
+    height: 10vh;
+    background-image: url(img/last.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 20vh;
+    right: 3%;
+    z-index: 2;
+    filter: brightness(80%);
+    transform: rotate(90deg);
+}
+#uptop:hover{
+    filter: brightness(100%);
+    cursor: pointer;
 }
 
 #down{
     position: fixed;
-    width: 15vh;
-    height: 15vh;
-    background-image: url(img/down.png);
+    width: 10vh;
+    height: 10vh;
+    background-image: url(img/next.png);
     background-repeat: no-repeat;
     background-size: cover;
-    bottom: 25vh;
+    bottom: 35vh;
     right: 3%;
     z-index: 2;
     filter: brightness(80%);
+    transform: rotate(-90deg);
 }
 #down:hover{
     filter: brightness(100%);
+    cursor: pointer;
+}
+#downbuttom{
+    position: fixed;
+    width: 10vh;
+    height: 10vh;
+    background-image: url(img/last.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 20vh;
+    right: 3%;
+    z-index: 2;
+    filter: brightness(80%);
+    transform: rotate(-90deg);
+}
+#downbuttom:hover{
+    filter: brightness(100%);
+    cursor: pointer;
 }
 
 .info{
