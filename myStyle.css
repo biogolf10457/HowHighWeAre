@@ -234,8 +234,8 @@ html{
 }
 #uptop{
     position: fixed;
-    width: 12vh;
-    height: 12vh;
+    width: 11vh;
+    height: 11vh;
     background-image: url(img/last.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -268,8 +268,8 @@ html{
 }
 #downbuttom{
     position: fixed;
-    width: 12vh;
-    height: 12vh;
+    width: 11vh;
+    height: 11vh;
     background-image: url(img/last.png);
     background-repeat: no-repeat;
     background-size: cover;
