@@ -220,7 +220,7 @@ html{
     position: fixed;
     width: 12vh;
     height: 12vh;
-    background-image: url(img/Up2.png);
+    background-image: url(img/Up3.png);
     background-repeat: no-repeat;
     background-size: cover;
     top: 25vh;
@@ -236,7 +236,7 @@ html{
     position: fixed;
     width: 12vh;
     height: 12vh;
-    background-image: url(img/down2.png);
+    background-image: url(img/down3.png);
     background-repeat: no-repeat;
     background-size: cover;
     bottom: 25vh;
