@@ -197,6 +197,19 @@ html{
     filter: brightness(150%);
     cursor: pointer;
 }
+.actObj img{
+    height: 100%;
+}
+.defh{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(0,-75%);
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 1.25em;
+    text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white;
+}
 
 .bgObj{
     --pos:60%;
