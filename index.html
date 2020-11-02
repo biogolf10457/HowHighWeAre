@@ -36,10 +36,10 @@
                             V 0
                             Z">
                         <animate
-                        repeatCount="indefinite" 
-                        fill="#6a489c" 
-                        attributeName="d" 
-                        dur="3s" 
+                        repeatCount="indefinite"
+                        fill="#6a489c"
+                        attributeName="d"
+                        dur="3s"
                         values="M 50 0
                                     C 0 270
                                     100 720
@@ -76,7 +76,7 @@
                 <div class="leftright"></div>
                 <div class="rightleft"></div>
                 <label class="close">close</label>
-            </div> 
+            </div>
             <!-- code from https://codepen.io/rsbear/pen/ZpXJVp -->
 
         </div>
@@ -88,7 +88,7 @@
         <div id="aboutUs">
             <div class="abox">
                 <div class="admin" id="admin1"></div>
-                <h4>ภาสกร นุชิตขจรวุฒิ 61070164</h4>
+                <h4>นายภาสกร นุชิตขจรวุฒิ 61070164</h4>
             </div>
             <div class="abox">
                 <div class="admin" id="admin2"></div>
@@ -114,12 +114,12 @@
                 <div class="leftright"></div>
                 <div class="rightleft"></div>
                 <label class="close">close</label>
-            </div> 
+            </div>
         </div>
 
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
-        <div v-for="s in scenes" :id="s.id" class="scene" 
+        <div v-for="s in scenes" :id="s.id" class="scene"
         :style="{'--g1': s.colorG1, '--g2': s.colorG2, '--h': s.height +'vh', '--b': s.where +'vh'}">
 
             <img v-for="o in s.actObj" class="actObj" :id="o.id" :src="o.img" alt="" @click="openDefinition(o.name, o.definition, o.realImg)"
@@ -216,7 +216,7 @@
                                 img:'svg/baiyok2.svg',
                                 realImg:'img/baiyoke2.jpg'
                             },
-                            { 
+                            {
                                 id:'pyramidKhufu',
                                 name:'พีระมิดคูฟู',
                                 pos:66,//หน่วย%
@@ -230,7 +230,7 @@
                                 img:'svg/pyramidKhufu.svg',
                                 realImg:'img/พีระมิดคูฟู/pyramid01.jpg'
                             },
-                            { 
+                            {
                                 id:'hyperion',
                                 name:'Hyperion Tree',
                                 pos:58,//หน่วย%
@@ -273,7 +273,7 @@
                                 img:'svg/colosseum.svg',
                                 realImg:'img/สนามกีฬาโคลอสเซียม/Colosseum01.jpg'
                             },
-                            
+
                             {
                                 id:'jesusChrist',
                                 name:'รูปปั้นพระเยซูคริสต์',
@@ -377,7 +377,7 @@
                         fontColor:'black',
                         scale: 1,
                         bgObj:[
-                            
+
                         ],
                         actObj:[
                             {
@@ -454,7 +454,7 @@
                     },
                     {
                         no:7,
-                        height:1500, 
+                        height:1500,
                         where:0,
                         id:'at184km',
                         colorG1:'#9cafbe',
@@ -511,7 +511,7 @@
                                 img:'svg/leo.svg',
                                 realImg:'img/earth_orbit.jpg'
                             },
-                            
+
                         ],
                         name:'Exosphere',
                         info:'เป็นชั้นบรรยากาศที่อยู่สูงจากผิวโลกตั้งแต่ 500 กิโลเมตรขึ้นไป ไม่มีขอบเขตชัดเจนระหว่างบรรยากาศและอวกาศ องค์ประกอบส่วนใหญ่เป็นแก๊สไฮโดรเจนและฮีเลียม',
@@ -549,7 +549,7 @@
                             {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
                             {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
                             {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
-                            
+
                             {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
                             {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
                             {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
@@ -624,7 +624,7 @@
                             {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
                             {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
                             {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
-                            
+
                             {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
                             {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
                             {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
@@ -700,7 +700,7 @@
                             {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
                             {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
                             {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
-                            
+
                             {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
                             {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
                             {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
@@ -776,7 +776,7 @@
                             {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
                             {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
                             {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
-                            
+
                             {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
                             {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
                             {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
@@ -835,7 +835,7 @@
                             {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
                             {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
                             {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
-                            
+
                             {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
                             {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
                             {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
@@ -926,7 +926,7 @@
                             {ClassObj:{star:true,bgObj:true},top:350,pos:33}, {ClassObj:{star:true,bgObj:true},top:340,pos:61},
                             {ClassObj:{star:true,bgObj:true},top:380,pos:15}, {ClassObj:{star:true,bgObj:true},top:370,pos:60},
                             {ClassObj:{star:true,bgObj:true},top:390,pos:38}, {ClassObj:{star:true,bgObj:true},top:381,pos:90},
-                            
+
                             {ClassObj:{star:true,bgObj:true},top:410,pos:10}, {ClassObj:{star:true,bgObj:true},top:405,pos:55},
                             {ClassObj:{star:true,bgObj:true},top:430,pos:40}, {ClassObj:{star:true,bgObj:true},top:420,pos:82},
                             {ClassObj:{star:true,bgObj:true},top:450,pos:33}, {ClassObj:{star:true,bgObj:true},top:440,pos:61},
