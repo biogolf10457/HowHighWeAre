@@ -218,8 +218,8 @@ html{
 
 #up{
     position: fixed;
-    width: 15vh;
-    height: 15vh;
+    width: 12vh;
+    height: 12vh;
     background-image: url(img/Up.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -234,8 +234,8 @@ html{
 
 #down{
     position: fixed;
-    width: 15vh;
-    height: 15vh;
+    width: 12vh;
+    height: 12vh;
     background-image: url(img/down.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -369,7 +369,7 @@ body {
 
 label{
   color: white;
-  font-family: Helvetica, Arial, sans-serif; 
+  font-family: Helvetica, Arial, sans-serif;
   font-size: .6em;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -395,7 +395,7 @@ label{
 /*---------------------------------------------------------------------------- */
 
 /*-----------code from https://lauryndbrown.github.io/2017/06/08/creating-clouds-in-css.html----------------- */
-.cloud{ 
+.cloud{
     margin-top:70px;
     width:350px;
     height:120px;
