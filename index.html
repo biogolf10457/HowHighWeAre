@@ -80,11 +80,10 @@
             <!-- code from https://codepen.io/rsbear/pen/ZpXJVp -->
 
         </div>
-        <div id="menu">
-            <div @click="goToBottom()">Go to Bottom</div>
-            <div @click="goToTop()">Go to Top</div>
+        <!--<div id="menu">
+            
             <div @click="openAboutUs()">About us</div>
-        </div>
+        </div>-->
         <div id="aboutUs">
             <div class="abox">
                 <div class="admin" id="admin1"></div>
@@ -119,6 +118,8 @@
 
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
+        <div id="uptop" @click="goToTop()"></div>
+        <div id="downbuttom" @click="goToBottom()"></div>
         <div v-for="s in scenes" :id="s.id" class="scene"
         :style="{'--g1': s.colorG1, '--g2': s.colorG2, '--h': s.height +'vh', '--b': s.where +'vh'}">
 
