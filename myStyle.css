@@ -227,16 +227,15 @@ html{
     right: 3%;
     z-index: 2;
     filter: brightness(80%);
-    transform: rotate(90deg);
 }
 #up:hover{
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
 }
 #uptop{
     position: fixed;
-    width: 10vh;
-    height: 10vh;
+    width: 12vh;
+    height: 12vh;
     background-image: url(img/last.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -247,7 +246,7 @@ html{
     transform: rotate(90deg);
 }
 #uptop:hover{
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
 }
 
@@ -262,16 +261,15 @@ html{
     right: 3%;
     z-index: 2;
     filter: brightness(80%);
-    transform: rotate(-90deg);
 }
 #down:hover{
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
 }
 #downbuttom{
     position: fixed;
-    width: 10vh;
-    height: 10vh;
+    width: 12vh;
+    height: 12vh;
     background-image: url(img/last.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -282,7 +280,7 @@ html{
     transform: rotate(-90deg);
 }
 #downbuttom:hover{
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
 }
 
