@@ -51,7 +51,7 @@ html{
     width: 90%;
     top: 5vh;
     left: 100%;
-    background-color: #00EAFF;
+    background-image: linear-gradient(to top,#B3E8FF,#80D9FF, #4DC9FF);
     border-radius: 50px;
     z-index: 4;
     transition: 1s;
@@ -218,9 +218,9 @@ html{
 
 #up{
     position: fixed;
-    width: 10vh;
-    height: 10vh;
-    background-image: url(img/next.png);
+    width: 12vh;
+    height: 12vh;
+    background-image: url(img/Up3.png);
     background-repeat: no-repeat;
     background-size: cover;
     top: 35vh;
@@ -253,9 +253,9 @@ html{
 
 #down{
     position: fixed;
-    width: 10vh;
-    height: 10vh;
-    background-image: url(img/next.png);
+    width: 12vh;
+    height: 12vh;
+    background-image: url(img/down3.png);
     background-repeat: no-repeat;
     background-size: cover;
     bottom: 35vh;
@@ -407,7 +407,7 @@ body {
 
 label{
   color: white;
-  font-family: Helvetica, Arial, sans-serif; 
+  font-family: Helvetica, Arial, sans-serif;
   font-size: .6em;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -433,7 +433,7 @@ label{
 /*---------------------------------------------------------------------------- */
 
 /*-----------code from https://lauryndbrown.github.io/2017/06/08/creating-clouds-in-css.html----------------- */
-.cloud{ 
+.cloud{
     margin-top:70px;
     width:350px;
     height:120px;
