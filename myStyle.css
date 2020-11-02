@@ -8,7 +8,7 @@ html{
     width: 90%;
     top: 5vh;
     right: 5%;
-    background-image: linear-gradient(to right,#f5c772,#e96161, #6a489c);
+    background-image: linear-gradient(to top,#FFFFFF,#6CDDFF, #2C00B2);
     border-radius: 50px;
     z-index: 3;
     transition: 1s;
