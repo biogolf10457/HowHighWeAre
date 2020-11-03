@@ -552,3 +552,51 @@ label{
     }
 
 }
+
+@media (orientation: landscape) {
+    #textbox h1{
+        font-size: 2em;
+    }
+    .info{
+        font-size: 1.25em;
+    }
+    #definition{
+        left: -35%;
+        width: 36%;
+    }
+    .defh{
+        font-size: 1.25em;
+    }
+    #up{
+        width: 12vh;
+        height: 12vh;
+        top: 35vh;
+    }
+    #uptop{
+        width: 12vh;
+        height: 12vh;
+        top: 20vh;
+    }
+    #down{
+        width: 12vh;
+        height: 12vh;
+        bottom: 35vh;
+    }
+    #downbuttom{
+        width: 12vh;
+        height: 12vh;
+        bottom: 20vh;
+    }
+    .sceneInfo h1{
+        font-size: 2em;
+    }
+    .sceneInfo p{
+        font-size: 1.5em;
+    }
+    #LEO .defh{
+        left: 50%;
+    }
+    #MEO .defh{
+        left: 50%;
+    }
+}
