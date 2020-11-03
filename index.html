@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <meta name="viewport" content="width=1200px, initial-scale=1.0">
     <link rel="stylesheet" href="myStyle.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -31,7 +31,7 @@
                             M 50 0
                             C 0 270
                               100 720
-                              50 1080
+                              50 2280
                             H 0
                             V 0
                             Z">
@@ -43,46 +43,35 @@
                         values="M 50 0
                                     C 0 270
                                     100 720
-                                    50 1080
+                                    50 2280
                                 H 0
                                 V 0
                                 Z;
                                 M 50 0
                                     C 100 270
                                     0 720
-                                    50 1080
+                                    50 2280
                                 H 0
                                 V 0
                                 Z;
                                 M 50 0
                                     C 0 270
                                     100 720
-                                    50 1080
+                                    50 2280
                                 H 0
                                 V 0
                                 Z;
-                                M 50 0
-                                    C 100 270
-                                    0 720
-                                    50 1080
-                                H 0
-                                V 0
-                                Z;
-                                M 50 0
-                                    C 0 270
-                                    100 720
-                                    50 1080
-                                H 0
-                                V 0
-                                Z;">
+                                ">
                         </animate>
                     </path>
                 </svg>
             </div>
             <div id="textbox">
                 <h1>{{title}}</h1>
-                <p class="info">{{realDefinition}}</p>
-                <img :src="imageSrc" alt="" style="width: 50%; margin-top: 1vh;">
+                <div>
+                    <p class="info">{{realDefinition}}</p>
+                    <img :src="imageSrc" alt="" style="width: 80%; margin-top: 20%;">
+                </div>
             </div>
 
             <!-- code from https://codepen.io/rsbear/pen/ZpXJVp -->
@@ -98,7 +87,7 @@
 
             <div @click="openAboutUs()">About us</div>
         </div>-->
-        <div id="aboutUs">
+        <!--<div id="aboutUs">
             <div class="abox">
                 <div class="admin" id="admin1"></div>
                 <h4>นายภาสกร นุชิตขจรวุฒิ 61070164</h4>
@@ -128,7 +117,7 @@
                 <div class="rightleft"></div>
                 <label class="close">close</label>
             </div>
-        </div>
+        </div>-->
 
         <div id="up" @click="goUp"></div>
         <div id="down" @click="goDown"></div>
@@ -979,6 +968,9 @@
                 },
                 closeDefinition: function(){
                     document.querySelector("#definition").style.left = -34+'%';
+                    if (w < 600) {
+                        document.querySelector("#definition").style.left = -68+'%';
+                    }
                 },
                 goUp: function(){
                     if (this.scaleIndex < this.scaleList.length-1) {
@@ -991,7 +983,7 @@
                             scene.where -= this.scenes[this.scaleIndex - this.scaleList.length + 1].height;
                         });
                     }
-                    this.closeDefinition();
+                    this.closeDefinition(); 
                 },
                 goDown: function(){
                     if (this.scaleIndex > 0 && this.scaleIndex <= this.scaleList.length-1) {
@@ -1019,6 +1011,13 @@
             }
         })
 
+        var w = screen.width;
+        var h = screen.height;
+        console.log("width:"+w+",height:"+h);
+        if (w < 600) {
+            app.scaleList = [200, 70, 18, 12, 6.5, 3.8, 0.4, 0.18]
+        }
+
         let accuHeight = 0;
         for (let index = 0; index < app.scenes.length; index++) {
             app.scenes[index].where = (0 + accuHeight);
@@ -1035,6 +1034,8 @@
             //set attribute of objects in html
             let onEarths = document.querySelector("#world").getElementsByClassName("onEarth");
         });
+
+
     </script>
 </body>
 </html>

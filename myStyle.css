@@ -123,14 +123,30 @@ html{
     overflow-x: visible;
 }
 #textbox{
-    margin-left: 10%;
-    margin-right: 20%;
+    margin-left: 15%;
+    margin-right: 15%;
     position: absolute;
-    top: 50vh;
-    transform: translate(0,-50%);
+    top: 10%;
+    height: 80%;
+    width: 70%;
+    transform: translate(0,0%);
     text-align: center;
     transition: 1s;
     opacity: 1;
+}
+#textbox h1{
+    height: 10%;
+    width: 100%;
+}
+#textbox div{
+    position: absolute;
+    width: 100%;
+    top: 55%;
+    transform: translate(0,-50%);
+}
+.info{
+    white-space:pre-wrap;
+    font-size: 1.35em;
 }
 
 #menu{
@@ -312,10 +328,6 @@ html{
     cursor: pointer;
 }
 
-.info{
-    white-space:pre-wrap;
-}
-
 .sceneInfo{
     --fc:black;
     margin-left: 25%;
@@ -405,7 +417,7 @@ body {
   width: 50px;
   height: 50px;
   top: 5%;
-  right: 10%;
+  right: 2%;
   cursor: pointer;
 }
 
@@ -487,3 +499,54 @@ label{
      left:130px;
  }
 /*---------------------------------------------------------------------------- */
+
+
+@media screen and (min-width: 600px) {
+    #textbox h1{
+        font-size: 3.25em;
+    }
+    .info{
+        font-size: 2.5em;
+    }
+    #definition{
+        left: -68%;
+        width: 70%;
+    }
+    .defh{
+        font-size: 3em;
+    }
+    #up{
+        width: 8vh;
+        height: 8vh;
+        top: 20vh;
+    }
+    #uptop{
+        width: 8vh;
+        height: 8vh;
+        top: 10vh;
+    }
+    #down{
+        width: 8vh;
+        height: 8vh;
+        bottom: 20vh;
+    }
+    #downbuttom{
+        width: 8vh;
+        height: 8vh;
+        bottom: 10vh;
+    }
+    .sceneInfo h1{
+        font-size: 3.25em;
+    }
+    .sceneInfo p{
+        font-size: 3em;
+    }
+
+    #LEO .defh{
+        left: -50%;
+    }
+    #MEO .defh{
+        left: -50%;
+    }
+
+}
