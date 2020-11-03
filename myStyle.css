@@ -555,10 +555,10 @@ label{
 
 @media (orientation: landscape) {
     #textbox h1{
-        font-size: 2em;
+        font-size: 1.5em;
     }
     .info{
-        font-size: 1.25em;
+        font-size: 1em;
     }
     #definition{
         left: -35%;
@@ -588,10 +588,10 @@ label{
         bottom: 20vh;
     }
     .sceneInfo h1{
-        font-size: 2em;
+        font-size: 1.5em;
     }
     .sceneInfo p{
-        font-size: 1.5em;
+        font-size: 1em;
     }
     #LEO .defh{
         left: 50%;
